@@ -21,8 +21,7 @@
                 android:id="@+id/main_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginHorizontal="25dp"
                 android:orientation="horizontal"
                 android:paddingTop="50dp">
                 <!--  Left  -->
@@ -218,7 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="本源"
+                        android:text="@string/main"
                         android:textColor="@color/black"
                         android:textSize="34sp" />
 
