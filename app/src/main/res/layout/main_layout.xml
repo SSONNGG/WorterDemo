@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--Title content-->
+            <LinearLayout
+                android:id="@+id/main_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal"
+                android:paddingTop="50dp">
+                <!--  Left  -->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="今天"
+                        android:textColor="@color/black"
+                        android:textSize="45sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All for Nothing"
+                        android:textColor="@color/black_second"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <!--Right-->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:text="@string/date"
+                        android:textColor="@color/black_second"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:text="@string/dayofweek"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--study modules-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- 开始学习 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/round_rectangle_shape"
+                    android:backgroundTint="@color/color_skyblue_light"
+                    android:elevation="10dp"
+                    android:onClick="startStudy"
+                    android:orientation="horizontal">
+
+                    <!--left-->
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="25dp"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="开始学习"
+                            android:textColor="@color/content_purple_title"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/tv_symbol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="第 1 组音标"
+                            android:textColor="@color/content_purple_title"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                    <!--    right    -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="25dp"
+                        android:paddingVertical="30dp">
+                        <ImageView
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:src="@drawable/pic_start" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--综合复习-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/round_rectangle_shape"
+                    android:backgroundTint="@color/color_grey_deep"
+                    android:elevation="10dp"
+                    android:onClick="generalStudy">
+
+                    <!--left-->
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="25dp"
+                        android:paddingVertical="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="综合复习"
+                            android:textColor="@color/black"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/tv_general"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="共 20 个单词需要复习"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                    <!--    right    -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="25dp"
+                        android:paddingVertical="30dp">
+
+                        <ImageView
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:src="@drawable/pic_review" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:paddingBottom="10dp"
+                android:text="特训"
+                android:textColor="@color/black"
+                android:textSize="34sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scrollbars="none">
+
+                <include layout="@layout/specialtrain_layout" />
+            </HorizontalScrollView>
+
+            <!--本源-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <!--标题区域-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="本源"
+                        android:textColor="@color/black"
+                        android:textSize="34sp" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_allArticle"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/more"
+                            android:textSize="16sp" />
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_more" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!--本源内容区-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_article"
+                    android:layout_width="match_parent"
+                    android:layout_height="430dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

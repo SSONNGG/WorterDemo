@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="55dp">
+
+    <!--本源-->
+    <LinearLayout
+        android:id="@+id/id_tab_main"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tab_iv_main"
+            android:background="@drawable/tab_main"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/text_main"
+            android:text="@string/main"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!--原语-->
+    <LinearLayout
+        android:id="@+id/id_tab_original"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tab_iv_original"
+            android:background="@drawable/tab_original"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/text_original"
+            android:text="@string/original"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!--速查-->
+    <LinearLayout
+        android:id="@+id/id_tab_search"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tab_iv_search"
+            android:background="@drawable/tab_search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/text_search"
+            android:text="@string/search"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!--我的-->
+    <LinearLayout
+        android:id="@+id/id_tab_my"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tab_iv_my"
+            android:background="@drawable/tab_my"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/text_my"
+            android:text="@string/my"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WorterTest v0.1</string>
+    <string name="login_title">Welcome to login</string>
+    <string name="login_protocols">已阅读并同意《用户注册协议》和《隐私协议》</string>
+    <string name="main">本源</string>
+    <string name="original">原语</string>
+    <string name="search">速查</string>
+    <string name="my">我的</string>
+    <string name="date">March 1st</string>
+    <string name="dayofweek">Tuesday</string>
+    <string name="more">查看全部</string>
+</resources>
