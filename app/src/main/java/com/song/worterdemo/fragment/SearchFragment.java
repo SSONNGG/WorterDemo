@@ -33,7 +33,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(rootView==null){
-            rootView= inflater.inflate(R.layout.search_layout, container, false);
+            rootView= inflater.inflate(R.layout.fragment_search, container, false);
         }
         return rootView;
     }

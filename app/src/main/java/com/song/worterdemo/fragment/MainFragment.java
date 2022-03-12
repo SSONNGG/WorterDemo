@@ -10,17 +10,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.ArticleActivity;
-import com.song.worterdemo.activity.MainActivity;
 import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
 import com.song.worterdemo.entity.ArticleTempo;
-import com.song.worterdemo.utils.SpaceItemUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +59,7 @@ public class MainFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(rootView==null){
-            rootView= inflater.inflate(R.layout.main_layout, container, false);
+            rootView= inflater.inflate(R.layout.fragment_main, container, false);
         }
         //对recycleview进行配置
         initRecyclerView();

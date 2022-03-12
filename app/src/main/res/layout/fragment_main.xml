@@ -196,7 +196,7 @@
                 android:layout_height="160dp"
                 android:scrollbars="none">
 
-                <include layout="@layout/specialtrain_layout" />
+                <include layout="@layout/layout_specialtain" />
             </HorizontalScrollView>
 
             <!--本源-->
