@@ -1,8 +1,7 @@
 package com.song.worterdemo.fragment;
 
 import android.os.Bundle;
-import android.transition.ChangeBounds;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -24,6 +24,8 @@ public class OriginalFragment  extends Fragment {
     View rootView;
     TabLayout tabLayout;
     ViewPager2 viewPager;
+
+    public RecyclerView recyclerView;//定义RecyclerView
 
     public OriginalFragment() {
     }
@@ -85,7 +87,7 @@ public class OriginalFragment  extends Fragment {
         ArrayList<Fragment> fragments=new ArrayList<>();
         fragments.add(AlphabetFragment.newInstance());
         fragments.add(SymbolFragment.newInstance());
-        MyFragmentPageAdapter adapter=new MyFragmentPageAdapter(getFragmentManager(),getLifecycle(),fragments);
+        MyFragmentPageAdapter adapter=new MyFragmentPageAdapter(getChildFragmentManager(),getLifecycle(),fragments);
         viewPager.setAdapter(adapter);
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
