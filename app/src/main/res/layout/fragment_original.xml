@@ -12,11 +12,13 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed">
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_alphabet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="字母"/>
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="音标"/>

@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SymbolDatabase symbolDatabase= Room.databaseBuilder(this,SymbolDatabase.class,"worter.db")
-                .allowMainThreadQueries()   //强制在主线程运行数据库
-                .build();
-        SymbolDao symbolDao=symbolDatabase.getSymbolDao();
-        //查询
-        LiveData<List<Symbol>> listLiveData=symbolDao.getAllSymbol();
-        Log.e("TAG", "onCreate: "+listLiveData);
+//        SymbolDatabase symbolDatabase= Room.databaseBuilder(this,SymbolDatabase.class,"worter.db")
+//                .allowMainThreadQueries()   //强制在主线程运行数据库
+//                .build();
+//        SymbolDao symbolDao=symbolDatabase.getSymbolDao();
+//        //查询
+//        LiveData<List<Symbol>> listLiveData=symbolDao.getAllSymbol();
+//        Log.e("TAG", "onCreate: "+listLiveData);
 
         //需要切换颜色就调用即可
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
