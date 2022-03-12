@@ -3,7 +3,7 @@
     package="com.song.worterdemo">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_worter_main"
         android:label="@string/app_name"

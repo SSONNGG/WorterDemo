@@ -2,27 +2,30 @@ package com.song.worterdemo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.room.Room;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
-import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
-import com.song.worterdemo.entity.ArticleTempo;
+import com.song.worterdemo.dao.SymbolDao;
+import com.song.worterdemo.db.SymbolDatabase;
+import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
 import com.song.worterdemo.fragment.SearchFragment;
 import com.song.worterdemo.utils.StatusBarUtil;
+import com.song.worterdemo.view.SymbolViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,18 +37,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SymbolDatabase symbolDatabase= Room.databaseBuilder(this,SymbolDatabase.class,"worter.db")
+                .allowMainThreadQueries()   //强制在主线程运行数据库
+                .build();
+        SymbolDao symbolDao=symbolDatabase.getSymbolDao();
+        //查询
+        LiveData<List<Symbol>> listLiveData=symbolDao.getAllSymbol();
+        Log.e("TAG", "onCreate: "+listLiveData);
+
         //需要切换颜色就调用即可
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
         initTableView();
+
+
     }
 
     //实现点击事件
