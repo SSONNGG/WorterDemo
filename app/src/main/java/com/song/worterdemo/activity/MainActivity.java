@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
+import com.song.worterdemo.entity.AlphabetCapAndLow;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
@@ -23,6 +25,7 @@ import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //主页操作
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ViewPager2 viewPager;
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
-    private DatabaseUtil importDB;
+    private DatabaseUtil dbutil;
     private AlphabetEngin engin;
 
 
@@ -41,18 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        importDB=new DatabaseUtil(this);
-        importDB.openDatabase();
+        //从数据库文件导入数据库
+        dbutil=new DatabaseUtil(this);
+        dbutil.openDatabase();
+
         engin=new AlphabetEngin(this);
-        engin.getAllAlphabet();
-
-
-//        engin.getSymbolByGroup(1);
-//        engin.getSymbolByCate("长元音");
-//        engin.getSymbolById(1);
-
-
-
+        engin.getAllCapAndLowAlphabet();
         //需要切换颜色就调用即可
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();

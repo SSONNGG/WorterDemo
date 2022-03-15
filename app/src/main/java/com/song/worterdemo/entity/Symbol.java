@@ -1,6 +1,7 @@
 package com.song.worterdemo.entity;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -18,7 +19,7 @@ public class Symbol {
     private int symbolId;
 
     @ColumnInfo(name = "symbol_content")
-    @NotNull
+    @NonNull
     private String symbolContent;
     @ColumnInfo(name = "symbol_group")
     private int symbolGroup;
@@ -27,10 +28,10 @@ public class Symbol {
     @ColumnInfo(name = "symbol_alphabet")
     private String symbolAlphabet;
     @ColumnInfo(name = "symbol_pronun")
-    @NotNull
+    @NonNull
     private String symbolPronun;
     @ColumnInfo(name = "symbol_categories")
-    @NotNull
+    @NonNull
     private String symbolCategories;
 
     public int getSymbolId() {

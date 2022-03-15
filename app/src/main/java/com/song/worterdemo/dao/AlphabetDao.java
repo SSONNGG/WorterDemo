@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.AlphabetCapAndLow;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ public interface AlphabetDao {
     @Query("select * from alphabet")
     List<Alphabet> getAllAlphabet();
 
-//    //查询所有大小写字母
-//    @Query("select alphabet_id, alphabet_capital,alphabet_lower from alphabet")
-//    List<Alphabet> getAllCapAndLowAlphabet();
+    //查询所有大小写字母
+    @Query("select alphabet_id, alphabet_capital,alphabet_lower from alphabet")
+    List<AlphabetCapAndLow> getAllCapAndLowAlphabet();
 
     //根据ID查询所有信息
     @Query("select * from alphabet where alphabet_id=:id")

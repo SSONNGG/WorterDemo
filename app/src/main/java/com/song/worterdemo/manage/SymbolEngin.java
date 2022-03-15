@@ -61,10 +61,10 @@ public class SymbolEngin {
 
         @Override
         protected Void doInBackground(Integer... integers) {
-            List<String> allsymbol=dao.getSymbolByGroup(integers);
+            List<Symbol> allsymbol=dao.getSymbolByGroup(integers);
             //遍历结果
-            for(String symbol:allsymbol){
-                Log.e("TAG", "doInBackground: 按照组别查询"+symbol.toString());
+            for(Symbol symbol:allsymbol){
+                Log.e("TAG", "doInBackground: 按照组别查询"+symbol.getSymbolAlphabet());
             }
             return null;
         }
@@ -85,9 +85,9 @@ public class SymbolEngin {
 
         @Override
         protected Void doInBackground(String... strings) {
-            List<String> allsymbol=dao.getSymbolByCate(strings);
+            List<Symbol> allsymbol=dao.getSymbolByCate(strings);
             //遍历结果
-            for(String symbol:allsymbol){
+            for(Symbol symbol:allsymbol){
                 Log.e("TAG", "doInBackground: 按照分类查询"+symbol.toString());
             }
             return null;

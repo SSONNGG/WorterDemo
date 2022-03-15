@@ -16,12 +16,12 @@ public interface SymbolDao {
     List<Symbol> getAllSymbol();
 
     //2.按照组别查询
-    @Query("select symbol_content from symbol where symbol_group= :group")
-    List<String> getSymbolByGroup(Integer[] group);
+    @Query("select * from symbol where symbol_group= :group")
+    List<Symbol> getSymbolByGroup(Integer[] group);
 
     //3.按照分类查询
-    @Query("select symbol_categories from symbol where symbol_group= :categories")
-    List<String> getSymbolByCate(String[] categories);
+    @Query("select * from symbol where symbol_group= :categories")
+    List<Symbol> getSymbolByCate(String[] categories);
 
     //4.按照ID查询
     @Query("select * from symbol where symbol_id=:id")

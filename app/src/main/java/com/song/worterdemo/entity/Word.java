@@ -1,5 +1,6 @@
 package com.song.worterdemo.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -18,20 +19,20 @@ public class Word {
     private int wordId;
 
     @ColumnInfo(name = "word_content")
-    @NotNull
+    @NonNull
     private String wordContent;
     @ColumnInfo(name = "word_trans")
-    @NotNull
+    @NonNull
     private String wordTrans;
     @ColumnInfo(name = "israw")
-    @NotNull
+    @NonNull
     private int israw;
     @ColumnInfo(name = "uk_symbol")
     private String ukSymbol;
     @ColumnInfo(name = "usa_symbol")
     private String usaSymbol;
     @ColumnInfo(name = "word_categories")
-    @NotNull
+    @NonNull
     private int wordCategories;
 
     @ColumnInfo(name = "symbol_id")

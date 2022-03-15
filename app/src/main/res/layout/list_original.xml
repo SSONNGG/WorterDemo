@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/tv_original"
-        android:text="Aa"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_width="wrap_content"

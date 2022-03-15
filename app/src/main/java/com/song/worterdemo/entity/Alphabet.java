@@ -1,5 +1,6 @@
 package com.song.worterdemo.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -17,18 +18,18 @@ public class Alphabet {
     private int alphabetId;
 
     @ColumnInfo(name = "alphabet_capital")
-    @NotNull
+    @NonNull
     private String alphabetCapital;
     @ColumnInfo(name = "alphabet_lower")
-    @NotNull
+    @NonNull
     private String alphabetLower;
 
     @ColumnInfo(name = "alphabet_pronun")
-    @NotNull
+    @NonNull
     private String alphabetPronun;
 
     @ColumnInfo(name = "alphabet_from")
-    @NotNull
+    @NonNull
     private String alphabetFrom;
 
     @ColumnInfo(name = "alphabet_isvowel")
