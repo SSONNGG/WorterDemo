@@ -24,14 +24,14 @@ public class SymbolEngin {
     //异步操作
     //getAllSymbol
     public void getAllSymbol(){
-        new getAllAsyncTask(dao).execute();
+        new getAllSymbolAsyncTask(dao).execute();
     }
 
-    static class getAllAsyncTask extends AsyncTask<Void,Void,Void> {
+    static class getAllSymbolAsyncTask extends AsyncTask<Void,Void,Void> {
 
         private SymbolDao dao;
 
-        public getAllAsyncTask(SymbolDao symbolDao){
+        public getAllSymbolAsyncTask(SymbolDao symbolDao){
             dao=symbolDao;
         }
 

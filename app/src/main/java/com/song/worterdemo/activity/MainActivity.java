@@ -17,6 +17,7 @@ import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
 import com.song.worterdemo.fragment.SearchFragment;
+import com.song.worterdemo.manage.AlphabetEngin;
 import com.song.worterdemo.manage.SymbolEngin;
 import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil importDB;
-    private SymbolEngin engin;
+    private AlphabetEngin engin;
 
 
 
@@ -42,12 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         importDB=new DatabaseUtil(this);
         importDB.openDatabase();
-        engin=new SymbolEngin(this);
+        engin=new AlphabetEngin(this);
+        engin.getAllAlphabet();
 
 
-        engin.getSymbolByGroup(1);
-        engin.getSymbolByCate("长元音");
-        engin.getSymbolById(1);
+//        engin.getSymbolByGroup(1);
+//        engin.getSymbolByCate("长元音");
+//        engin.getSymbolById(1);
 
 
 

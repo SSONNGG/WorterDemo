@@ -2,6 +2,7 @@ package com.song.worterdemo.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -59,21 +60,18 @@ public class Alphabet {
         this.alphabetLower = alphabetLower;
     }
 
-    @NotNull
     public String getAlphabetPronun() {
         return alphabetPronun;
     }
 
-    public void setAlphabetPronun(@NotNull String alphabetPronun) {
+    public void setAlphabetPronun(String alphabetPronun) {
         this.alphabetPronun = alphabetPronun;
     }
-
-    @NotNull
     public String getAlphabetFrom() {
         return alphabetFrom;
     }
 
-    public void setAlphabetFrom(@NotNull String alphabetFrom) {
+    public void setAlphabetFrom( String alphabetFrom) {
         this.alphabetFrom = alphabetFrom;
     }
 
@@ -85,7 +83,7 @@ public class Alphabet {
         this.alphabetIsvowel = alphabetIsvowel;
     }
 
-    public Alphabet(int alphabetId, @NotNull String alphabetCapital, @NotNull String alphabetLower, @NotNull String alphabetPronun, @NotNull String alphabetFrom, int alphabetIsvowel) {
+    public Alphabet(int alphabetId, @NotNull String alphabetCapital, @NotNull String alphabetLower, String alphabetPronun, String alphabetFrom, int alphabetIsvowel) {
         this.alphabetId = alphabetId;
         this.alphabetCapital = alphabetCapital;
         this.alphabetLower = alphabetLower;
@@ -94,5 +92,15 @@ public class Alphabet {
         this.alphabetIsvowel = alphabetIsvowel;
     }
 
-
+    @Override
+    public String toString() {
+        return "Alphabet{" +
+                "alphabetId=" + alphabetId +
+                ", alphabetCapital='" + alphabetCapital + '\'' +
+                ", alphabetLower='" + alphabetLower + '\'' +
+                ", alphabetPronun='" + alphabetPronun + '\'' +
+                ", alphabetFrom='" + alphabetFrom + '\'' +
+                ", alphabetIsvowel=" + alphabetIsvowel +
+                '}';
+    }
 }
