@@ -10,11 +10,10 @@ import java.util.List;
 
 @Dao    //音标表数据库访问接口
 public interface SymbolDao {
-    //1.查询所有
+    //1.查询所有音标content
     //使用livedata进行数据包装
     @Query("select * from symbol")
-   LiveData<List<Symbol>> getAllSymbol();
-
+   List<Symbol> getAllSymbol();
     //2.按照组别查询
 
     //3.按照分类查询

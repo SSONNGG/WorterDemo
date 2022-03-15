@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.song.worterdemo.dao.SymbolDao;
 import com.song.worterdemo.entity.Symbol;
@@ -12,7 +14,7 @@ import com.song.worterdemo.entity.Symbol;
 //Symbol表的数据库管理类
 @Database(entities = {Symbol.class},version = 1,exportSchema = false)
 public abstract class SymbolDatabase extends RoomDatabase {
-    private static final String DATABASE_NAME = "symbol";
+    private static final String DATABASE_NAME = "worter.db";
 
     //使用单例模式进行访问
     public SymbolDatabase(){

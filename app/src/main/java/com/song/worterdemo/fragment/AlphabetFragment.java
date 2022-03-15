@@ -37,5 +37,7 @@ public class AlphabetFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_alphabet, container, false);
+
+
     }
 }

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * 音标表的实体类
  */
-@Entity(tableName = "symbol")
+@Entity
 public class Symbol {
 
     @PrimaryKey(autoGenerate = true)
