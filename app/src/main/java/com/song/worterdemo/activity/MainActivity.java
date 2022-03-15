@@ -44,7 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         importDB.openDatabase();
         engin=new SymbolEngin(this);
 
-        engin.getAllSymbol();
+
+        engin.getSymbolByGroup(1);
+        engin.getSymbolByCate("长元音");
+        engin.getSymbolById(1);
 
 
 

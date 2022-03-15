@@ -46,4 +46,76 @@ public class SymbolEngin {
         }
     }
 
+    //getSymbolByGroup
+    public void getSymbolByGroup(Integer...integers){
+        new getSymbolByGroupTask(dao).execute(integers);
+    }
+
+    static class getSymbolByGroupTask extends AsyncTask<Integer,Void,Void> {
+
+        private SymbolDao dao;
+
+        public getSymbolByGroupTask(SymbolDao symbolDao){
+            dao=symbolDao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            List<String> allsymbol=dao.getSymbolByGroup(integers);
+            //遍历结果
+            for(String symbol:allsymbol){
+                Log.e("TAG", "doInBackground: 按照组别查询"+symbol.toString());
+            }
+            return null;
+        }
+    }
+
+    //getSymbolByCate
+    public void getSymbolByCate(String...categories){
+        new getSymbolByCateTask(dao).execute(categories);
+    }
+
+    static class getSymbolByCateTask extends AsyncTask<String,Void,Void> {
+
+        private SymbolDao dao;
+
+        public getSymbolByCateTask(SymbolDao symbolDao){
+            dao=symbolDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            List<String> allsymbol=dao.getSymbolByCate(strings);
+            //遍历结果
+            for(String symbol:allsymbol){
+                Log.e("TAG", "doInBackground: 按照分类查询"+symbol.toString());
+            }
+            return null;
+        }
+    }
+
+    //getSymbolById
+    public void getSymbolById(Integer...integers){
+        new getSymbolByIdTask(dao).execute(integers);
+    }
+
+    static class getSymbolByIdTask extends AsyncTask<Integer,Void,Void> {
+
+        private SymbolDao dao;
+
+        public getSymbolByIdTask(SymbolDao symbolDao){
+            dao=symbolDao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            List<Symbol> allsymbol=dao.getSymbolById(integers);
+            //遍历结果
+            for(Symbol symbol:allsymbol){
+                Log.e("TAG", "doInBackground: 按照ID查询"+symbol.toString());
+            }
+            return null;
+        }
+    }
+
 }
