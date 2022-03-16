@@ -2,9 +2,12 @@ package com.song.worterdemo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Database;
+import androidx.room.Room;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +17,8 @@ import android.widget.TextView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
+import com.song.worterdemo.dao.AlphabetDao;
+import com.song.worterdemo.db.AlphabetDatabase;
 import com.song.worterdemo.entity.AlphabetCapAndLow;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
@@ -34,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    private AlphabetEngin engin;
+
+
 
 
 
@@ -48,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
 
-        engin=new AlphabetEngin(this);
-        engin.getAllCapAndLowAlphabet();
-        //需要切换颜色就调用即可
+
+        //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
         initTableView();
@@ -157,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     /**
      * 开始学习
      * @param view
@@ -182,5 +186,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("title",textView.getText());
         startActivity(intent);
     }
+
+
+
+
 
 }

@@ -2,6 +2,7 @@ package com.song.worterdemo.fragment;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.AlphabetRecyclerViewAdapter;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
+import com.song.worterdemo.dao.AlphabetDao;
+import com.song.worterdemo.db.AlphabetDatabase;
 import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.AlphabetCapAndLow;
 import com.song.worterdemo.entity.ArticleTempo;
@@ -31,21 +34,12 @@ import java.util.List;
 
 //原语
 public class OriginalFragment  extends Fragment {
-
     View rootView;
-    TabLayout tabLayout;
     ViewPager2 viewPager;
-    //字母数据
-    List<AlphabetCapAndLow> alphabetCapAndLow;
-    List<Alphabet> alphabets;
-    //音标数据
-    List<Symbol> symbols;
-    //RecyclerView适配器
-    AlphabetRecyclerViewAdapter adapter;
-    //数据库引擎
-    AlphabetEngin alphabetEngin;
+    TabLayout tabLayout;
 
-    public RecyclerView recyclerView;//定义RecyclerView
+
+
 
     public OriginalFragment() {
     }
@@ -59,6 +53,7 @@ public class OriginalFragment  extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -88,10 +83,7 @@ public class OriginalFragment  extends Fragment {
             }
         });
         initPage();
-        //配置recyclerView
-        //配置数据
-        initData();
-        initRecyclerView();
+
         return rootView;
     }
 
@@ -107,37 +99,10 @@ public class OriginalFragment  extends Fragment {
         }
     }
 
-    /*
-     * 配置数据
-     */
-    private void initData(){
-        alphabetEngin=new AlphabetEngin(getActivity());
-//        alphabetCapAndLow=alphabetEngin.getAllCapAndLowAlphabet();
-
-    }
 
 
-    /**
-     * 对Recyleview进行配置
-     */
-    private void initRecyclerView(){
-        //获取
-        recyclerView=viewPager.findViewById(R.id.rv_alphabet);
-        //创建Adapter
-        adapter=new AlphabetRecyclerViewAdapter(alphabetCapAndLow,getActivity());
-        //设置Adapter
-        recyclerView.setAdapter(adapter);
-        //设置layoutManager
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
-        //设置监听事件
-        adapter.setOnItemClickListener(new AlphabetRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(View view, AlphabetCapAndLow data) {
-                //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
+
 
     //初始化ViewPage
     private void initPage(){

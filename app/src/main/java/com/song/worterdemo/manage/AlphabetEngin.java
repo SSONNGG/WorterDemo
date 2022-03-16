@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
 import com.song.worterdemo.dao.AlphabetDao;
 import com.song.worterdemo.db.AlphabetDatabase;
 import com.song.worterdemo.entity.Alphabet;
@@ -36,11 +38,9 @@ public class AlphabetEngin {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            List<Alphabet> allAlphabet=dao.getAllAlphabet();
+            LiveData<List<Alphabet>> allAlphabet=dao.getAllAlphabet();
             //遍历结果
-            for(Alphabet alphabet:allAlphabet){
-                Log.e("TAG", "doInBackground: 查询所有字母"+alphabet.toString());
-            }
+
             return null;
         }
     }
@@ -50,9 +50,10 @@ public class AlphabetEngin {
     //getAllCapAndLowAlphabet
     public void getAllCapAndLowAlphabet(){
         new AlphabetEngin.getAllCapAndLowAlphabetTask(dao).execute();
+
     }
 
-    static class getAllCapAndLowAlphabetTask extends AsyncTask<Void, Void, Void> {
+        static class getAllCapAndLowAlphabetTask extends AsyncTask<Void, Void, Void> {
 
         private AlphabetDao dao;
 

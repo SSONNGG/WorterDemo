@@ -1,5 +1,6 @@
 package com.song.worterdemo.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public interface AlphabetDao {
     //查询所有字母
     @Query("select * from alphabet")
-    List<Alphabet> getAllAlphabet();
+    LiveData<List<Alphabet>> getAllAlphabet();
 
     //查询所有大小写字母
     @Query("select alphabet_id, alphabet_capital,alphabet_lower from alphabet")

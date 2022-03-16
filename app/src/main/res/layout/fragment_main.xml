@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="5dp"
-                            android:text="第 1 组音标"
+                            android:text="第 -1 组音标"
                             android:textColor="@color/content_purple_title"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -162,7 +162,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="5dp"
-                            android:text="共 20 个单词需要复习"
+                            android:text="共 -1 个单词需要复习"
                             android:textColor="@color/black"
                             android:textSize="13sp" />
                     </LinearLayout>

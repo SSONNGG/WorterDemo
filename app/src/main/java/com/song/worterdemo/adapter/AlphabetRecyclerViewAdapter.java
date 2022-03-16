@@ -16,6 +16,7 @@ import com.song.worterdemo.entity.AlphabetCapAndLow;
 import java.util.List;
 
 public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRecyclerViewAdapter.MyViewHolder> {
+
     private List<AlphabetCapAndLow> data;
     private Context context;
 

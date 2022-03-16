@@ -37,6 +37,7 @@ public abstract class AlphabetDatabase extends RoomDatabase {
         if(alphabetDatabase==null){
             alphabetDatabase= Room.databaseBuilder(context.getApplicationContext(),AlphabetDatabase.class,ALPHA_DATABASE)
                     .addMigrations(MIGRATION_1_2)
+                    .allowMainThreadQueries()   //强制开启主线程
                     .build();
         }
         return alphabetDatabase;
