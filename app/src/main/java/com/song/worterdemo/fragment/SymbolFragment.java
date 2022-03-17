@@ -55,7 +55,6 @@ public class SymbolFragment extends Fragment {
         }
         //配置数据和RecylerView
         initRecyclerView();
-
         return rootView;
     }
 
@@ -75,6 +74,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void onChanged(List<Symbol> symbols) {
                 adapter.setData(symbols);
+                adapter.notifyDataSetChanged();
             }
         });
         //设置监听事件
