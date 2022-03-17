@@ -1,5 +1,6 @@
 package com.song.worterdemo.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +10,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
-import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.Symbol;
 
 import java.util.List;
 
-public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRecyclerViewAdapter.MyViewHolder> {
+public class SymbolRecyclerViewAdapter extends RecyclerView.Adapter<SymbolRecyclerViewAdapter.MyViewHolder> {
 
-    private List<Alphabet> data;
 
-    public void setData(List<Alphabet> data){
-        this.data=data;
+    private List<Symbol> data;
+    private Context context;
+
+
+    public SymbolRecyclerViewAdapter(List<Symbol> data, Context context) {
+        this.data = data;
+        this.context = context;
     }
+
+
 
     /**
      * 填充组件
      */
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_original;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -47,20 +54,18 @@ public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRe
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_original,parent,false);
-        return new AlphabetRecyclerViewAdapter.MyViewHolder(view);
+        return new SymbolRecyclerViewAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AlphabetRecyclerViewAdapter.MyViewHolder holder, int position) {
-        String alphabet=data.get(position).getAlphabetCapital()+data.get(position).getAlphabetLower();
-        holder.tv_original.setText(alphabet);
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.tv_original.setText(data.get(position).getSymbolContent());
     }
 
     @Override
     public int getItemCount() {
         return data ==null?0:data.size();
     }
-
 
     /**
      * 设置item的监听事件的接口
@@ -72,13 +77,13 @@ public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRe
          * @param view 点击的item的视图
          * @param data 点击的item的数据
          */
-        public void OnItemClick(View view, Alphabet data);
+        public void OnItemClick(View view, Symbol data);
     }
 
     //需要外部访问，所以需要设置set方法，方便调用
-    private AlphabetRecyclerViewAdapter.OnItemClickListener onItemClickListener;
+    private SymbolRecyclerViewAdapter.OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(AlphabetRecyclerViewAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(SymbolRecyclerViewAdapter.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 

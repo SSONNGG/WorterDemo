@@ -36,6 +36,7 @@ public abstract class WordDatabase extends RoomDatabase {
         if(wordDatabase==null){
             wordDatabase= Room.databaseBuilder(context.getApplicationContext(),WordDatabase.class,WORD_DATABASE)
                     .addMigrations(MIGRATION_1_2)
+                    .allowMainThreadQueries()
                     .build();
         }
         return wordDatabase;

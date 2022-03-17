@@ -3,23 +3,20 @@ package com.song.worterdemo.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.AlphabetRecyclerViewAdapter;
-import com.song.worterdemo.dao.AlphabetDao;
-import com.song.worterdemo.db.AlphabetDatabase;
 import com.song.worterdemo.entity.Alphabet;
-import com.song.worterdemo.entity.AlphabetCapAndLow;
+import com.song.worterdemo.viewmodel.AlphabetViewModel;
 
 import java.util.List;
 
@@ -32,14 +29,13 @@ public class AlphabetFragment extends Fragment {
 
     View rootView;
 
-    //字母数据
-    List<AlphabetCapAndLow> alphabetCapAndLow;
     List<Alphabet> alphabets;
     //RecyclerView适配器
     AlphabetRecyclerViewAdapter adapter;
-    AlphabetDatabase database;
-    AlphabetDao alphabetDao;
     RecyclerView recyclerView;//定义RecyclerView
+
+    AlphabetViewModel alphabetViewModel;
+
 
 
     public AlphabetFragment() {
@@ -53,10 +49,9 @@ public class AlphabetFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //数据库操作
-        database=AlphabetDatabase.getAlphabetDatabase(getActivity());
-        alphabetDao=database.getAlphabetDao();
+        alphabetViewModel=new ViewModelProvider(this).get(AlphabetViewModel.class);
+
     }
 
     @Override
@@ -66,21 +61,16 @@ public class AlphabetFragment extends Fragment {
         if(rootView==null){
             rootView= inflater.inflate(R.layout.fragment_alphabet, container, false);
         }
-
         //配置recyclerView
-        //配置数据
-        initData();
         initRecyclerView();
         return rootView;
-
     }
 
     /*
      * 配置数据
      */
     private void initData(){
-        alphabetCapAndLow=alphabetDao.getAllCapAndLowAlphabet();
-        Log.e("TAG", "initData: "+alphabetCapAndLow.toString() );
+
     }
 
     /**
@@ -89,19 +79,27 @@ public class AlphabetFragment extends Fragment {
     private void initRecyclerView(){
         //获取
         recyclerView=rootView.findViewById(R.id.rv_alphabet);
-        //创建Adapter
-        adapter=new AlphabetRecyclerViewAdapter(alphabetCapAndLow,getActivity());
-        //设置Adapter
-        recyclerView.setAdapter(adapter);
+        adapter=new AlphabetRecyclerViewAdapter();
         //设置layoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapter);
+        //配置数据,使用livedata监控数据变化
+        alphabetViewModel.getAlphabetLive().observe(getViewLifecycleOwner(), new Observer<List<Alphabet>>() {
+            @Override
+            public void onChanged(List<Alphabet> alphabets) {
+                adapter.setData(alphabets);
+                adapter.notifyDataSetChanged();
+            }
+        });
         //设置监听事件
         adapter.setOnItemClickListener(new AlphabetRecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void OnItemClick(View view, AlphabetCapAndLow data) {
+            public void OnItemClick(View view, Alphabet data) {
                 //监听事件业务处理
                 Toast.makeText(getActivity(),"我是item"+data.getAlphabetId(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

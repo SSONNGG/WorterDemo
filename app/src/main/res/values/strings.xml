@@ -9,4 +9,14 @@
     <string name="date">March 1st</string>
     <string name="dayofweek">Tuesday</string>
     <string name="more">查看全部</string>
+    <string name="vowels">元音</string>
+    <string name="vowels_long">长元音</string>
+    <string name="vowels_short">短元音</string>
+    <string name="vowels_double">双元音</string>
+    <string name="consonants">辅音</string>
+    <string name="consonants_clear">清辅音</string>
+    <string name="consonants_turbid">浊辅音</string>
+    <string name="consonants_nose">鼻音</string>
+    <string name="consonants_tongue">舌侧音</string>
+    <string name="consonants_semi">半元音</string>
 </resources>

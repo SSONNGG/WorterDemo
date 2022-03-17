@@ -2,12 +2,11 @@ package com.song.worterdemo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.room.Database;
-import androidx.room.Room;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,17 +16,14 @@ import android.widget.TextView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
-import com.song.worterdemo.dao.AlphabetDao;
-import com.song.worterdemo.db.AlphabetDatabase;
-import com.song.worterdemo.entity.AlphabetCapAndLow;
+import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
 import com.song.worterdemo.fragment.SearchFragment;
-import com.song.worterdemo.manage.AlphabetEngin;
-import com.song.worterdemo.manage.SymbolEngin;
 import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
+import com.song.worterdemo.viewmodel.AlphabetViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,27 +36,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //从数据库文件导入数据库
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
-
-
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
         initTableView();
-
-
     }
 
 

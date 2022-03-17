@@ -23,14 +23,13 @@ public abstract class AlphabetDatabase extends RoomDatabase {
     public AlphabetDatabase(){
 
     }
+    private static  AlphabetDatabase alphabetDatabase;
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             // 因为没有变化，所以是一个空实现
         }
     };
-
-    private static  AlphabetDatabase alphabetDatabase;
 
 
     synchronized public static AlphabetDatabase getAlphabetDatabase(Context context){

@@ -30,9 +30,11 @@ public abstract class SymbolDatabase extends RoomDatabase {
     };
 
 
+
     synchronized public static SymbolDatabase getSymbolDatabase(Context context){
         if(symbolDatabase==null){
             symbolDatabase= Room.databaseBuilder(context.getApplicationContext(),SymbolDatabase.class,SYMBOL_DATABASE)
+                    .allowMainThreadQueries()
                     .addMigrations(MIGRATION_1_2)
                     .build();
         }

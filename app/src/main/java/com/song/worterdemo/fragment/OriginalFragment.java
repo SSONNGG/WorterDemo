@@ -2,35 +2,20 @@ package com.song.worterdemo.fragment;
 
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.song.worterdemo.R;
-import com.song.worterdemo.adapter.AlphabetRecyclerViewAdapter;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
-import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
-import com.song.worterdemo.dao.AlphabetDao;
-import com.song.worterdemo.db.AlphabetDatabase;
-import com.song.worterdemo.entity.Alphabet;
-import com.song.worterdemo.entity.AlphabetCapAndLow;
-import com.song.worterdemo.entity.ArticleTempo;
-import com.song.worterdemo.entity.Symbol;
-import com.song.worterdemo.manage.AlphabetEngin;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //原语
 public class OriginalFragment  extends Fragment {

@@ -13,17 +13,19 @@ public interface SymbolDao {
     //1.查询所有音标content
     //使用livedata进行数据包装
     @Query("select * from symbol")
-    List<Symbol> getAllSymbol();
+    LiveData<List<Symbol>> getAllSymbol();
 
     //2.按照组别查询
     @Query("select * from symbol where symbol_group= :group")
-    List<Symbol> getSymbolByGroup(Integer[] group);
+    LiveData<List<Symbol>> getSymbolByGroup(Integer... group);
 
     //3.按照分类查询
-    @Query("select * from symbol where symbol_group= :categories")
-    List<Symbol> getSymbolByCate(String[] categories);
+    @Query("select * from symbol where symbol_categories= :categories")
+    LiveData<List<Symbol>> getSymbolByCate(String... categories);
 
     //4.按照ID查询
     @Query("select * from symbol where symbol_id=:id")
-    List<Symbol> getSymbolById(Integer[] id);
+    LiveData<List<Symbol>> getSymbolById(Integer... id);
+
+
 }
