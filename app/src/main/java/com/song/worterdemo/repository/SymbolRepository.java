@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 
 import com.song.worterdemo.dao.SymbolDao;
-import com.song.worterdemo.db.SymbolDatabase;
+import com.song.worterdemo.db.WorterDatabase;
 import com.song.worterdemo.entity.Symbol;
 
 import java.util.List;
@@ -15,9 +15,8 @@ public class SymbolRepository {
     private SymbolDao dao;
 
     public SymbolRepository(Context context) {
-        SymbolDatabase database=SymbolDatabase.getSymbolDatabase(context.getApplicationContext());
+        WorterDatabase database=WorterDatabase.getWorterDatabase(context.getApplicationContext());
         dao=database.getSymbolDao();
-
     }
 
     public LiveData<List<Symbol>> getAllSymbolLive(){

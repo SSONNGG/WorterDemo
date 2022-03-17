@@ -4,7 +4,7 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 
 import com.song.worterdemo.dao.AlphabetDao;
-import com.song.worterdemo.db.AlphabetDatabase;
+import com.song.worterdemo.db.WorterDatabase;
 import com.song.worterdemo.entity.Alphabet;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class AlphabetRepository {
     private AlphabetDao dao;
 
     public AlphabetRepository(Context context) {
-        AlphabetDatabase database=AlphabetDatabase.getAlphabetDatabase(context.getApplicationContext());
+        WorterDatabase database=WorterDatabase.getWorterDatabase(context.getApplicationContext());
         dao=database.getAlphabetDao();
     }
 

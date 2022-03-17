@@ -5,15 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.song.worterdemo.R;
-import com.song.worterdemo.dao.SymbolDao;
-import com.song.worterdemo.db.SymbolDatabase;
-import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.utils.StatusBarUtil;
-
-import java.util.List;
 
 public class StudyActivity extends AppCompatActivity {
 

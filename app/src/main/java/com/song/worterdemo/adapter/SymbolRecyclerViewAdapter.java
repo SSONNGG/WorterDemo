@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
+import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Symbol;
 
 import java.util.List;
@@ -18,15 +19,10 @@ public class SymbolRecyclerViewAdapter extends RecyclerView.Adapter<SymbolRecycl
 
 
     private List<Symbol> data;
-    private Context context;
 
-
-    public SymbolRecyclerViewAdapter(List<Symbol> data, Context context) {
-        this.data = data;
-        this.context = context;
+    public void setData(List<Symbol> data){
+        this.data=data;
     }
-
-
 
     /**
      * 填充组件
@@ -59,7 +55,8 @@ public class SymbolRecyclerViewAdapter extends RecyclerView.Adapter<SymbolRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_original.setText(data.get(position).getSymbolContent());
+        String symbol=data.get(position).getSymbolContent();
+        holder.tv_original.setText(symbol);
     }
 
     @Override

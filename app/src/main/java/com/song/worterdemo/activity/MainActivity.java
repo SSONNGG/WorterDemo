@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
@@ -24,6 +25,7 @@ import com.song.worterdemo.fragment.SearchFragment;
 import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
+import com.song.worterdemo.viewmodel.SymbolViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

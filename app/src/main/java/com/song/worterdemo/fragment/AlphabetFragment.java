@@ -28,12 +28,10 @@ import java.util.List;
 public class AlphabetFragment extends Fragment {
 
     View rootView;
-
-    List<Alphabet> alphabets;
     //RecyclerView适配器
     AlphabetRecyclerViewAdapter adapter;
-    RecyclerView recyclerView;//定义RecyclerView
-
+    //定义RecyclerView
+    RecyclerView recyclerView;
     AlphabetViewModel alphabetViewModel;
 
 
@@ -61,16 +59,9 @@ public class AlphabetFragment extends Fragment {
         if(rootView==null){
             rootView= inflater.inflate(R.layout.fragment_alphabet, container, false);
         }
-        //配置recyclerView
+        //配置recyclerView和加载数据
         initRecyclerView();
         return rootView;
-    }
-
-    /*
-     * 配置数据
-     */
-    private void initData(){
-
     }
 
     /**

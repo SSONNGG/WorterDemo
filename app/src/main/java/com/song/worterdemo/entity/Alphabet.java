@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * 字母实体类
  */
-@Entity
+@Entity(tableName = "alphabet")
 public class Alphabet {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "alphabet_id")

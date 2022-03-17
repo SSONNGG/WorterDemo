@@ -10,20 +10,23 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.song.worterdemo.dao.AlphabetDao;
 import com.song.worterdemo.dao.SymbolDao;
+import com.song.worterdemo.dao.WordDao;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.Review;
 import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.Word;
 
 //Alphabet表的数据库管理类
-@Database(entities = {Alphabet.class},version = 2,exportSchema = false)
-public abstract class AlphabetDatabase extends RoomDatabase {
+@Database(entities = {Alphabet.class, Symbol.class},version = 2,exportSchema = false)
+public abstract class WorterDatabase extends RoomDatabase {
 
     private static final String ALPHA_DATABASE = "worter.db";
 
     //使用单例模式进行访问
-    public AlphabetDatabase(){
+    public WorterDatabase(){
 
     }
-    private static  AlphabetDatabase alphabetDatabase;
+    private static WorterDatabase database;
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
@@ -32,15 +35,20 @@ public abstract class AlphabetDatabase extends RoomDatabase {
     };
 
 
-    synchronized public static AlphabetDatabase getAlphabetDatabase(Context context){
-        if(alphabetDatabase==null){
-            alphabetDatabase= Room.databaseBuilder(context.getApplicationContext(),AlphabetDatabase.class,ALPHA_DATABASE)
+
+
+    synchronized public static WorterDatabase getWorterDatabase(Context context){
+        if(database==null){
+            database= Room.databaseBuilder(context.getApplicationContext(),WorterDatabase.class,ALPHA_DATABASE)
                     .addMigrations(MIGRATION_1_2)
                     .allowMainThreadQueries()   //强制开启主线程
                     .build();
         }
-        return alphabetDatabase;
+        return database;
     }
 
     public abstract AlphabetDao getAlphabetDao();
+
+
+    public abstract SymbolDao getSymbolDao();
 }
