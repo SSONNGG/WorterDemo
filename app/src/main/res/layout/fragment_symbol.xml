@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SymbolFragment">
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <TextView
                 android:text="@string/vowels"
                 android:textSize="20sp"
@@ -33,39 +34,42 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:text="@string/vowels_long"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_vowels_long"
+                    android:nestedScrollingEnabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="@string/vowels_short"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/black_second"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_vowels_double"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:text="@string/vowels_double"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_vowels_short"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@string/vowels_double"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_vowels_double"
+                    android:nestedScrollingEnabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -77,85 +81,90 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:paddingVertical="20dp"
-            android:background="@drawable/round_rectangle_shape"
-            android:backgroundTint="@color/color_grey_light"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="@string/consonants_clear"
-                android:textSize="16sp"
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_consonants_clear"
+                android:paddingVertical="20dp"
+                android:background="@drawable/round_rectangle_shape"
+                android:backgroundTint="@color/color_grey_light"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/consonants_clear"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="@string/consonants_turbid"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/black_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_consonants_clear"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_consonants_turbid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@string/consonants_turbid"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="@string/consonants_nose"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/black_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_consonants_turbid"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_consonants_nose"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@string/consonants_nose"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="@string/consonants_tongue"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/black_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_consonants_nose"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_consonants_tongue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@string/consonants_tongue"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="@string/consonants_semi"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/black_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_consonants_tongue"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_consonants_semi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:text="@string/consonants_semi"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_consonants_semi"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
         </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </FrameLayout>

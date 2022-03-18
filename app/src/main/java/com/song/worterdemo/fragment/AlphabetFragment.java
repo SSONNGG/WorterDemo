@@ -88,7 +88,7 @@ public class AlphabetFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Alphabet data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getAlphabetId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"我是item"+data.getAlphabetCapital(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,14 @@ public class SymbolFragment extends Fragment {
     //不同种类的音标数据
     List<Symbol> symbol;
     //RecyclerView适配器
-    SymbolRecyclerViewAdapter adapter;
+    SymbolRecyclerViewAdapter adapterLong;
+    SymbolRecyclerViewAdapter adapterShort;
+    SymbolRecyclerViewAdapter adapterDouble;
+    SymbolRecyclerViewAdapter adapterClear;
+    SymbolRecyclerViewAdapter adapterTurbid;
+    SymbolRecyclerViewAdapter adapterNose;
+    SymbolRecyclerViewAdapter adapterTongue;
+    SymbolRecyclerViewAdapter adapterSemi;
     RecyclerView recyclerView;
     SymbolViewModel viewModel;
 
@@ -62,31 +70,225 @@ public class SymbolFragment extends Fragment {
      * 配置RecyclerView
      */
     private void initRecyclerView(){
+        BindViewVowelsLong();
+        BindViewVowelsShort();
+        BindViewVowelsDouble();
+        BindViewConClear();
+        BindViewConTurbid();
+        BindViewConNose();
+        BindViewConTongue();
+        BindViewConSemi();
+    }
+
+    private void BindViewVowelsLong(){
         //获取-长元音
         recyclerView=rootView.findViewById(R.id.rv_vowels_long);
-        adapter=new SymbolRecyclerViewAdapter();
+        adapterLong=new SymbolRecyclerViewAdapter();
         //设置layoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
         //设置Adapter
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapterLong);
         //配置数据，使用livedata监控数据变化
         viewModel.getSymbolByCate("长元音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
             @Override
             public void onChanged(List<Symbol> symbols) {
-                adapter.setData(symbols);
-                adapter.notifyDataSetChanged();
+                adapterLong.setData(symbols);
+                adapterLong.notifyDataSetChanged();
             }
         });
         //设置监听事件
-        adapter.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+        adapterLong.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
+
+    private void BindViewVowelsShort(){
+        //获取-短元音
+        recyclerView=rootView.findViewById(R.id.rv_vowels_short);
+        adapterShort=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterShort);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("短元音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterShort.setData(symbols);
+                adapterShort.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterShort.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewVowelsDouble(){
+        //获取-双元音
+        recyclerView=rootView.findViewById(R.id.rv_vowels_double);
+        adapterDouble=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterDouble);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("双元音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterDouble.setData(symbols);
+                adapterDouble.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterDouble.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewConClear(){
+        //获取-清辅音
+        recyclerView=rootView.findViewById(R.id.rv_consonants_clear);
+        adapterClear=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterClear);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("清辅音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterClear.setData(symbols);
+                adapterClear.notifyDataSetChanged();
+
+            }
+        });
+        //设置监听事件
+        adapterClear.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewConTurbid(){
+        //获取-浊辅音
+        recyclerView=rootView.findViewById(R.id.rv_consonants_turbid);
+        adapterTurbid=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterTurbid);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("浊辅音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterTurbid.setData(symbols);
+                adapterTurbid.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterTurbid.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewConNose(){
+        //获取-鼻音
+        recyclerView=rootView.findViewById(R.id.rv_consonants_nose);
+        adapterNose=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterNose);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("鼻音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterNose.setData(symbols);
+                adapterNose.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterNose.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewConTongue(){
+        //获取-舌侧音
+        recyclerView=rootView.findViewById(R.id.rv_consonants_tongue);
+        adapterTongue=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterTongue);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("舌侧音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterTongue.setData(symbols);
+                adapterTongue.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterTongue.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void BindViewConSemi(){
+        //获取-半元音
+        recyclerView=rootView.findViewById(R.id.rv_consonants_semi);
+        adapterSemi=new SymbolRecyclerViewAdapter();
+        //设置layoutManager
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        //设置Adapter
+        recyclerView.setAdapter(adapterSemi);
+        //配置数据，使用livedata监控数据变化
+        viewModel.getSymbolByCate("半元音").observe(getViewLifecycleOwner(), new Observer<List<Symbol>>() {
+            @Override
+            public void onChanged(List<Symbol> symbols) {
+                adapterSemi.setData(symbols);
+                adapterSemi.notifyDataSetChanged();
+            }
+        });
+        //设置监听事件
+        adapterSemi.setOnItemClickListener(new SymbolRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, Symbol data) {
+                //监听事件业务处理
+                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
 }
