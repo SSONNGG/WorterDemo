@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.SymbolRecyclerViewAdapter;
+import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
 
@@ -101,7 +102,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -127,7 +128,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -153,7 +154,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -180,7 +181,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -206,7 +207,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -232,7 +233,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -258,7 +259,7 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
@@ -284,9 +285,15 @@ public class SymbolFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Symbol data) {
                 //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item"+data.getSymbolContent(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
+    }
+
+    private void showDialog(Symbol data){
+        SymbolDialogFragment symbolDialogFragment=new SymbolDialogFragment();
+        symbolDialogFragment.setData(data);
+        symbolDialogFragment.show(getChildFragmentManager(),null);
     }
 
 
