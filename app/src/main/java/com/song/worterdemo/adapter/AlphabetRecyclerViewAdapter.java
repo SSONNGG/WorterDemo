@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.fragment.AlphabetDialogFragment;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRe
     }
 
     /**
-     * 填充组件
+     * 填充组件Fragment
      */
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_original;

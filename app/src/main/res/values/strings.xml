@@ -19,4 +19,7 @@
     <string name="consonants_nose">鼻音</string>
     <string name="consonants_tongue">舌侧音</string>
     <string name="consonants_semi">半元音</string>
+    <string name="alphabet_string">约在 3000 年前，在腓尼基字母表中字母 A 读如 aleph，写起来形似字母 V，中间再加一横，
+        代表牛头或牛角。以后希腊人将它倒过来写。对于古代腓尼基人来说，牛意味着财富，吃，穿，耕作都少不了它。这也许就是 A 被列为第一个字母的缘故。</string>
+
 </resources>

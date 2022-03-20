@@ -3,6 +3,7 @@ package com.song.worterdemo.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -88,9 +89,14 @@ public class AlphabetFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Alphabet data) {
                 //监听事件业务处理
+                showDialog();
                 Toast.makeText(getActivity(),"我是item"+data.getAlphabetCapital(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showDialog(){
+        new AlphabetDialogFragment().show(getChildFragmentManager(),null);
     }
 
 }
