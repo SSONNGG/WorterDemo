@@ -50,7 +50,6 @@ public class AlphabetFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //数据库操作
         alphabetViewModel=new ViewModelProvider(this).get(AlphabetViewModel.class);
-
     }
 
     @Override
@@ -89,14 +88,15 @@ public class AlphabetFragment extends Fragment {
             @Override
             public void OnItemClick(View view, Alphabet data) {
                 //监听事件业务处理
-                showDialog();
-                Toast.makeText(getActivity(),"我是item"+data.getAlphabetCapital(), Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
     }
 
-    private void showDialog(){
-        new AlphabetDialogFragment().show(getChildFragmentManager(),null);
+    private void showDialog(Alphabet data){
+        AlphabetDialogFragment alphabetDialogFragment=new AlphabetDialogFragment();
+        alphabetDialogFragment.setData(data);
+        alphabetDialogFragment.show(getChildFragmentManager(),null);
     }
 
 }

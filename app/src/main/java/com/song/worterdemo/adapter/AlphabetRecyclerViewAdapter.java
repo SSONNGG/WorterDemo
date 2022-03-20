@@ -31,7 +31,6 @@ public class AlphabetRecyclerViewAdapter extends RecyclerView.Adapter<AlphabetRe
             super(itemView);
             //绑定tv
             tv_original=itemView.findViewById(R.id.tv_original);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
