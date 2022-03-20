@@ -19,5 +19,7 @@
     <string name="consonants_nose">鼻音</string>
     <string name="consonants_tongue">舌侧音</string>
     <string name="consonants_semi">半元音</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
