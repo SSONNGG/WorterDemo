@@ -35,4 +35,14 @@
     <color name="content_text_yellow">#FFDA82</color>
     <color name="shadow_color">#26000000</color>
 
+
+    <color name="monday">#FF7171</color>
+    <color name="tuesday">#F0E4D7</color>
+    <color name="wednesday">#F6DFEB</color>
+    <color name="thursday">#CAF7E3</color>
+    <color name="friday">#F5C0C0</color>
+    <color name="saturday">#F8EDED</color>
+    <color name="sunday">#8FACFD</color>
+
+
 </resources>

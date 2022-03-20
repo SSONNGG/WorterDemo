@@ -5,9 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".fragment.NumDateFragment">
 
-    <TextView
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="数字日期" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="星期"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scrollbars="none">
+
+            <include layout="@layout/layout_weekday" />
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
+
 
 </FrameLayout>
