@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:elevation="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@drawable/round_rectangle_shape"
+    android:backgroundTint="@color/wordbook_blue"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="25dp"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_wordcontent"
+                android:text="garden"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_wordsymbol_uk"
+                android:text="英 [ˈɡɑːdn]"
+                android:textColor="@color/white_second"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_wordsymbol_usa"
+                android:text="美 [ˈɡɑːrdn]"
+                android:textColor="@color/white_second"
+                android:textSize="12sp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="right|bottom"
+            android:layout_weight="4"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/word_symbol"
+                android:text="词源：[ɑ:]"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/word_trans"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

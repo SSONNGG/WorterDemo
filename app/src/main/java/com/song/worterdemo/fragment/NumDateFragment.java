@@ -120,8 +120,8 @@ public class NumDateFragment extends Fragment {
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                month.setText( (monthOfYear + 1) + "月" );
-                day.setText( dayOfMonth + "日");
+                month.setText( (monthOfYear + 1) + " 月" );
+                day.setText( dayOfMonth + " 日");
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
