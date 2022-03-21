@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.song.worterdemo.R;
-import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
+import com.song.worterdemo.adapter.ArticleRecyclerViewAdapter;
 import com.song.worterdemo.entity.ArticleTempo;
 import com.song.worterdemo.utils.StatusBarUtil;
 
@@ -25,7 +24,7 @@ public class ArticleActivity extends AppCompatActivity {
 
     private List<ArticleTempo> article=new ArrayList<>();   //临时数据
     //自定义recyclerveiw的适配器
-    private MyRecyclerViewAdapter adapter;
+    private ArticleRecyclerViewAdapter adapter;
 
 
     @Override
@@ -38,11 +37,11 @@ public class ArticleActivity extends AppCompatActivity {
         initData();
 
         recyclerView=findViewById(R.id.rv_article_list);
-        MyRecyclerViewAdapter adapter=new MyRecyclerViewAdapter(article,ArticleActivity.this);
+        ArticleRecyclerViewAdapter adapter=new ArticleRecyclerViewAdapter(article,ArticleActivity.this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ArticleActivity.this,LinearLayoutManager.VERTICAL,false));
         //设置监听事件
-        adapter.setOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ArticleRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, ArticleTempo data) {
                 //监听事件业务处理

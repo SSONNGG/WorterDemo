@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.ArticleActivity;
-import com.song.worterdemo.adapter.MyRecyclerViewAdapter;
+import com.song.worterdemo.adapter.ArticleRecyclerViewAdapter;
 import com.song.worterdemo.entity.ArticleTempo;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class MainFragment extends Fragment{
 
     private List<ArticleTempo> article=new ArrayList<>();   //临时数据
     //自定义recyclerveiw的适配器
-    private MyRecyclerViewAdapter adapter;
+    private ArticleRecyclerViewAdapter adapter;
 
 
 
@@ -99,13 +99,13 @@ public class MainFragment extends Fragment{
         //获取
         recyclerView=rootView.findViewById(R.id.rv_article);
         //创建Adapter
-        adapter=new MyRecyclerViewAdapter(article,getActivity());
+        adapter=new ArticleRecyclerViewAdapter(article,getActivity());
         //设置Adapter
         recyclerView.setAdapter(adapter);
         //设置layoutManager
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         //设置监听事件
-        adapter.setOnItemClickListener(new MyRecyclerViewAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new ArticleRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, ArticleTempo data) {
                 //监听事件业务处理

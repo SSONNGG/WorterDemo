@@ -10,28 +10,32 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
-import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.ArticleTempo;
 
 import java.util.List;
 
-public class MyOriginalRvAdapter extends RecyclerView.Adapter<MyOriginalRvAdapter.MyViewHolder>{
+public class ArticleRecyclerViewAdapter extends RecyclerView.Adapter<ArticleRecyclerViewAdapter.MyViewHolder> {
 
-    private List<Alphabet> data;
+
+    private List<ArticleTempo> data;
     private Context context;
 
-    public MyOriginalRvAdapter(List<Alphabet> data, Context context) {
+    public ArticleRecyclerViewAdapter(List<ArticleTempo> data, Context context) {
         this.data = data;
         this.context = context;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView text;
-
+        private TextView title_main;
+        private TextView title_sub;
+        private TextView content;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             //绑定tv
-            text=itemView.findViewById(R.id.tv_original);
+            title_main=itemView.findViewById(R.id.tv_title_main);
+            title_sub=itemView.findViewById(R.id.tv_title_sub);
+            content=itemView.findViewById(R.id.tv_content);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -47,18 +51,32 @@ public class MyOriginalRvAdapter extends RecyclerView.Adapter<MyOriginalRvAdapte
         }
     }
 
+
+    /**
+     * 创建ViewHolder方法
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_original,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_article,parent,false);
         return new MyViewHolder(view);
     }
 
+    /**
+     * 与数据绑定
+     * @param holder
+     * @param position
+     */
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArticleRecyclerViewAdapter.MyViewHolder holder, int position) {
+        holder.title_main.setText(data.get(position).getTitleMain());
+        holder.title_sub.setText(data.get(position).getTitleSub());
+        holder.content.setText(data.get(position).getArticleContent());
 
     }
-
 
     @Override
     public int getItemCount() {
@@ -76,14 +94,15 @@ public class MyOriginalRvAdapter extends RecyclerView.Adapter<MyOriginalRvAdapte
          * @param view 点击的item的视图
          * @param data 点击的item的数据
          */
-        public void OnItemClick(View view,Alphabet data);
+        public void OnItemClick(View view, ArticleTempo data);
     }
 
     //需要外部访问，所以需要设置set方法，方便调用
-    private MyOriginalRvAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(MyOriginalRvAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
+
 
 }
