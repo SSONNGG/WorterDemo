@@ -27,6 +27,7 @@ public class ArticleActivity extends AppCompatActivity {
     //自定义recyclerveiw的适配器
     private MyRecyclerViewAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
