@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.NumDateFragment">
+    tools:context=".fragment.NumDateFragment"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -23,12 +24,181 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scrollbars="none">
-
             <include layout="@layout/layout_weekday" />
         </HorizontalScrollView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:text="数字"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/et_num"
+            android:hint="@string/input_num"
+            android:gravity="center"
+            android:layout_marginHorizontal="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+
+        <LinearLayout
+            android:background="@drawable/round_rectangle_shape"
+            android:backgroundTint="@color/color_grey_light"
+            android:elevation="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="25dp"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_num_ch"
+                android:text="零"
+                android:textColor="@color/black_second"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_num_en"
+                android:text="Zero"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:text="日期"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:divider="@drawable/divider"
+            android:showDividers="middle"
+            android:dividerPadding="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_month"
+                android:hint="三月"
+                android:background="@null"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="datetime" />
+
+            <EditText
+                android:id="@+id/et_day"
+                android:hint="二十一"
+                android:background="@null"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="datetime" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="20dp"
+                android:padding="15dp"
+                android:gravity="center|center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:elevation="5dp"
+                android:background="@drawable/round_rectangle_shape"
+                android:backgroundTint="@color/color_grey_light"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_month_first"
+                    android:text="March"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tv_month_second"
+                    android:text="Third month (of the lunar year)"
+                    android:textSize="14sp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="20dp"
+                android:padding="15dp"
+                android:gravity="center|center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:elevation="5dp"
+                android:background="@drawable/round_rectangle_shape"
+                android:backgroundTint="@color/color_grey_light"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_day_first"
+                    android:text="Twenty-first"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_day_second"
+                    android:text="21st"
+                    android:textSize="14sp"
+                    android:textColor="@color/black_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
     </LinearLayout>
 
 
-</FrameLayout>
+
+
+</LinearLayout>
