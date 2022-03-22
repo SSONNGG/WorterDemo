@@ -15,9 +15,10 @@ import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Review;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.Word;
+import com.song.worterdemo.entity.WordAndSymbol;
 
 //Alphabet表的数据库管理类
-@Database(entities = {Alphabet.class, Symbol.class},version = 2,exportSchema = false)
+@Database(entities = {Alphabet.class, Symbol.class,Word.class},version = 2,exportSchema = false)
 public abstract class WorterDatabase extends RoomDatabase {
 
     private static final String ALPHA_DATABASE = "worter.db";
@@ -34,9 +35,6 @@ public abstract class WorterDatabase extends RoomDatabase {
         }
     };
 
-
-
-
     synchronized public static WorterDatabase getWorterDatabase(Context context){
         if(database==null){
             database= Room.databaseBuilder(context.getApplicationContext(),WorterDatabase.class,ALPHA_DATABASE)
@@ -51,4 +49,7 @@ public abstract class WorterDatabase extends RoomDatabase {
 
 
     public abstract SymbolDao getSymbolDao();
+
+    public abstract WordDao getWordDao();
+
 }

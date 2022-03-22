@@ -18,6 +18,7 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.WordAndSymbol;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
@@ -26,6 +27,7 @@ import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
+import com.song.worterdemo.viewmodel.WordViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
+    WordViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //从数据库文件导入数据库
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
+
+        viewModel=new ViewModelProvider(this).get(WordViewModel.class);
+        viewModel.getWordAndSymbol().observe(this, new Observer<List<WordAndSymbol>>() {
+            @Override
+            public void onChanged(List<WordAndSymbol> wordAndSymbols) {
+                Log.e("TAG", "onChanged: "+wordAndSymbols.toString() );
+            }
+        });
+
+
+
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
