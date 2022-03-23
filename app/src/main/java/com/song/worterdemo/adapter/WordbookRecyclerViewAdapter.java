@@ -12,20 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.song.worterdemo.R;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.Word;
+import com.song.worterdemo.entity.WordAndSymbol;
 
 import java.util.List;
 
 public class WordbookRecyclerViewAdapter extends RecyclerView.Adapter<WordbookRecyclerViewAdapter.MyViewHolder> {
-    List<Word> data;
+    List<WordAndSymbol> data;
     private Context context;
 
 
-    public void setData(List<Word> data){
+    public void setData(List<WordAndSymbol> data){
         this.data=data;
     }
 
 
-    public WordbookRecyclerViewAdapter(List<Word> data, Context context) {
+    public WordbookRecyclerViewAdapter(List<WordAndSymbol> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -68,7 +69,7 @@ public class WordbookRecyclerViewAdapter extends RecyclerView.Adapter<WordbookRe
         holder.wordcontent.setText(data.get(position).getWordContent());
         holder.wordsymbol_uk.setText("英"+data.get(position).getUkSymbol());
         holder.wordsymbol_usa.setText("美"+data.get(position).getUsaSymbol());
-        holder.wordsymbol.setText("词源："+data.get(position).getSymbolId());  //TODO：word表外键配置
+        holder.wordsymbol.setText("词源："+data.get(position).getSymbolContent());
         holder.wordtrans.setText(data.get(position).getWordTrans());
 
     }
@@ -83,7 +84,7 @@ public class WordbookRecyclerViewAdapter extends RecyclerView.Adapter<WordbookRe
      */
 
     public interface OnItemClickListener{
-        public void OnItemClick(View view,Word data);
+        public void OnItemClick(View view,WordAndSymbol data);
     }
 
     //供给外部访问调用的set方法

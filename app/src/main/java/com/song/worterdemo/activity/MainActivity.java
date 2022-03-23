@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbutil.openDatabase();
 
         viewModel=new ViewModelProvider(this).get(WordViewModel.class);
-        viewModel.getWordBySymbolId(1).observe(this, new Observer<List<WordAndSymbol>>() {
-            @Override
-            public void onChanged(List<WordAndSymbol> wordAndSymbols) {
-                Log.e("TAG", "onChanged: "+wordAndSymbols.toString() );
-            }
-        });
+//        viewModel.getWordBySymbolId(1).observe(this, new Observer<List<WordAndSymbol>>() {
+//            @Override
+//            public void onChanged(List<WordAndSymbol> wordAndSymbols) {
+//                Log.e("TAG", "onChanged: "+wordAndSymbols.toString() );
+//            }
+//        });
 
 
 

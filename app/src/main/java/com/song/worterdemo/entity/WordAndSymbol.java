@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Relation;
 
 /**
@@ -109,6 +110,10 @@ public class WordAndSymbol {
 
     public void setSymbolGroup(int symbolGroup) {
         this.symbolGroup = symbolGroup;
+    }
+
+    @Ignore
+    public WordAndSymbol() {
     }
 
     public WordAndSymbol(int wordId, @NonNull String wordContent, @NonNull String wordTrans, int israw, String ukSymbol, String usaSymbol, int symbolId, @NonNull String symbolContent, int symbolGroup) {
