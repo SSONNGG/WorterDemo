@@ -34,7 +34,7 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(rootView==null){
-            rootView= inflater.inflate(R.layout.fragment_search, container, false);
+            rootView= inflater.inflate(R.layout.fragment_my, container, false);
         }
         return rootView;
     }
