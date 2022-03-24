@@ -45,5 +45,7 @@
     <color name="saturday">#F8EDED</color>
     <color name="sunday">#8FACFD</color>
 
+    <color name="nostudy">#D9D9D9</color>
+
 
 </resources>
