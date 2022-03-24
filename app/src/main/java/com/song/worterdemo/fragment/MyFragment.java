@@ -1,8 +1,5 @@
 package com.song.worterdemo.fragment;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.barryzhang.tcontributionsview.TContributionsView;
 import com.barryzhang.tcontributionsview.adapter.IntArraysContributionsViewAdapter;
-import com.barryzhang.tcontributionsview.adapter.PositionContributionsViewAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.song.worterdemo.R;
-import com.song.worterdemo.adapter.MyContributionsViewAdapter;
 
 //我的
 public class MyFragment extends Fragment {
