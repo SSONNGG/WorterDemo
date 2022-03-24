@@ -6,8 +6,8 @@
     <string name="original">原语</string>
     <string name="search">速查</string>
     <string name="my">我的</string>
-    <string name="date">March 1st</string>
-    <string name="dayofweek">Tuesday</string>
+    <string name="date">March 24th</string>
+    <string name="dayofweek">Thursday</string>
     <string name="more">查看全部</string>
     <string name="vowels">元音</string>
     <string name="vowels_long">长元音</string>
@@ -22,6 +22,15 @@
     <string name="input_num">请输入数字</string>
     <string name="word_trans">n. 花园，菜园，果园；庭园；公园；（用于街名）街，广场\nv. 做园艺工作，种植花木</string>
     <string name="updateuser">编辑资料</string>
+    
     <string name="daily_record">Daily Record</string>
+    <string name="setting">系统设置</string>
+    <string name="darkmode">深色模式</string>
+    <string name="development">联系开发者</string>
+    <string name="string_email" formatted="false">Email: ssoonngg0924@foxmail.com</string>
+    <string name="string_weibo" formatted="false">@喜欢皮卡丘的宋宋</string>
+    <string name="string_github" formatted="false">@SSONNGG</string>
+    <string name="about">关于</string>
+    <string name="version">版本号：早期开发版本</string>
 
 </resources>
