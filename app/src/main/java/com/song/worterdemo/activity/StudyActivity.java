@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.song.worterdemo.R;
@@ -15,6 +18,8 @@ import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.WordAndSymbol;
 import com.song.worterdemo.fragment.StudyFragment;
 import com.song.worterdemo.utils.StatusBarUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,11 +38,8 @@ public class StudyActivity extends AppCompatActivity {
         //需要切换颜色就调用即可
         StatusBarUtil.setStatusBarMode(this, true, R.color.content_background_blue);
 
-
         initData();
         initPage();
-
-
 
     }
 
@@ -46,12 +48,31 @@ public class StudyActivity extends AppCompatActivity {
         viewPager=findViewById(R.id.id_studyViewPage);
         ArrayList<Fragment> fragments=new ArrayList<>();
         for(int i=0;i<n;i++){
-            Bundle bundle=new Bundle();
-            bundle.putSerializable("symbol",(Serializable) wordAndSymbols);
-            fragments.add(StudyFragment.newInstance(bundle));
+            fragments.add(StudyFragment.newInstance());
         }
         MyFragmentPageAdapter pageAdapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
         viewPager.setAdapter(pageAdapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                changeData(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+            }
+        });
+    }
+
+    private void changeData(int position){
+        EventBus.getDefault().postSticky(wordAndSymbols.get(position));
     }
 
     private void initData(){
@@ -68,7 +89,6 @@ public class StudyActivity extends AppCompatActivity {
             wordAndSymbol.setIsraw(1);
             wordAndSymbols.add(wordAndSymbol);
         }
-        Log.e("TAG", "initData: "+wordAndSymbols.toString() );
 
     }
 

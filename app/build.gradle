@@ -90,4 +90,7 @@ dependencies {
 
     implementation 'com.barryzhang:tcontributionsview:0.2'
 
+    //eventBus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
 }
