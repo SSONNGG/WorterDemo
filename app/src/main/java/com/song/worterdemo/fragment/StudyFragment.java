@@ -55,9 +55,9 @@ public class StudyFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onEvent(WordAndSymbol data){
-        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
-        tv=rootView.findViewById(R.id.id);
-        tv.setText(data.toString());
+//        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
+//        tv=rootView.findViewById(R.id.id);
+//        tv.setText(data.toString());
     }
 
     @Override
