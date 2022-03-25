@@ -1,5 +1,8 @@
 package com.song.worterdemo.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
@@ -7,10 +10,12 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Relation;
 
+import java.io.Serializable;
+
 /**
  * 单词和对应音标的一对一关系表
  */
-public class WordAndSymbol {
+public class WordAndSymbol implements Serializable {
 
     @ColumnInfo(name = "word_id")
     private int wordId;
@@ -142,4 +147,5 @@ public class WordAndSymbol {
                 ", symbolGroup=" + symbolGroup +
                 '}';
     }
+
 }

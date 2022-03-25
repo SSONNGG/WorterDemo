@@ -22,7 +22,7 @@
     <string name="input_num">请输入数字</string>
     <string name="word_trans">n. 花园，菜园，果园；庭园；公园；（用于街名）街，广场\nv. 做园艺工作，种植花木</string>
     <string name="updateuser">编辑资料</string>
-    
+
     <string name="daily_record">Daily Record</string>
     <string name="setting">系统设置</string>
     <string name="darkmode">深色模式</string>
@@ -32,5 +32,8 @@
     <string name="string_github" formatted="false">@SSONNGG</string>
     <string name="about">关于</string>
     <string name="version">版本号：早期开发版本</string>
+    
+    <string name="study_memorize">记忆模式</string>
+    <string name="study_symbol">音标：[ɑ:]</string>
 
 </resources>

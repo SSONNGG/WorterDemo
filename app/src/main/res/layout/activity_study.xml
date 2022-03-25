@@ -4,13 +4,13 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:text="标题测试"
-        android:textSize="24sp"
-        android:paddingTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/layout_study"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/id_studyViewPage"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
 </LinearLayout>

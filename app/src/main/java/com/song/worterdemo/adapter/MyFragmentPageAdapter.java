@@ -29,4 +29,6 @@ public class MyFragmentPageAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return fragmentList.size();
     }
+
+
 }
