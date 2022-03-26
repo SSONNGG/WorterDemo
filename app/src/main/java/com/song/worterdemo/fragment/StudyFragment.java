@@ -53,6 +53,7 @@ public class StudyFragment extends Fragment {
         return rootView;
     }
 
+    //订阅并绑定数据到控件
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onEvent(WordAndSymbol data){
 //        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );

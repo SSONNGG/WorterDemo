@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/content_background_blue"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <LinearLayout
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -33,11 +34,15 @@
                 android:textSize="11sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
-
         </LinearLayout>
-
-
     </LinearLayout>
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:paddingHorizontal="25dp"
+        android:progressDrawable="@drawable/progressbar_style"
+        android:layout_width="match_parent"
+        android:max="100"
+        android:progress="50"
+        android:layout_height="5dp"/>
 
 </LinearLayout>
