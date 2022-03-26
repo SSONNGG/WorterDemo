@@ -1,16 +1,23 @@
 package com.song.worterdemo.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.song.worterdemo.R;
+import com.song.worterdemo.activity.StudyActivity;
 import com.song.worterdemo.entity.WordAndSymbol;
 
 import org.greenrobot.eventbus.EventBus;
@@ -50,15 +57,27 @@ public class StudyFragment extends Fragment {
         }
         //注册
         EventBus.getDefault().register(this);
+        bindButtonChange();
         return rootView;
+    }
+
+    private void bindButtonChange() {
+        Button btnNext=rootView.findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getContext(),"button按下",Toast.LENGTH_SHORT).show();
+                ((StudyActivity)getActivity()).changePage();
+            }
+        });
     }
 
     //订阅并绑定数据到控件
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onEvent(WordAndSymbol data){
-//        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
-//        tv=rootView.findViewById(R.id.id);
-//        tv.setText(data.toString());
+    //    Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
+    //        tv=rootView.findViewById(R.id.id);
+    //        tv.setText(data.toString());
     }
 
     @Override
@@ -66,4 +85,6 @@ public class StudyFragment extends Fragment {
         super.onDestroy();
         EventBus.getDefault().unregister(this); //取消注册
     }
+
+
 }

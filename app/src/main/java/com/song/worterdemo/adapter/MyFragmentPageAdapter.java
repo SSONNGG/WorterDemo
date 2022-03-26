@@ -1,5 +1,7 @@
 package com.song.worterdemo.adapter;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,7 +14,6 @@ import java.util.List;
 //自定义Fragment适配器
 public class MyFragmentPageAdapter extends FragmentStateAdapter {
     List<Fragment> fragmentList=new ArrayList<>();
-
 
     public MyFragmentPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, List<Fragment> fragments) {
         super(fragmentManager, lifecycle);

@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="@string/study_symbol"
+                android:text="音标：[ɑ:]"
                 android:textColor="@color/white_second"
                 android:textSize="11sp"
                 android:layout_width="wrap_content"

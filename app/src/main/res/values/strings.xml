@@ -30,10 +30,15 @@
     <string name="string_email" formatted="false">Email: ssoonngg0924@foxmail.com</string>
     <string name="string_weibo" formatted="false">@喜欢皮卡丘的宋宋</string>
     <string name="string_github" formatted="false">@SSONNGG</string>
-    <string name="about">关于</string>
+    <string name="about">关于</string>继续
     <string name="version">版本号：早期开发版本</string>
     
     <string name="study_memorize">记忆模式</string>
-    <string name="study_symbol">音标：[ɑ:]</string>
+    <string name="study_symbol">音标</string>
+    <string name="study_alphabet">字母及其字母组合</string>
+    <string name="study_pronun">发音</string>
+    <string name="study_btngo">继续</string>
+
+
 
 </resources>
