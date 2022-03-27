@@ -47,16 +47,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    //glide工具
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    //viewpager2依赖
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    //对layout实现圆角的依赖
-    implementation 'io.github.csdn-mobile:RoundView:1.7.1'
-    //导入RecyclerView依赖
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //添加Room依赖
     def room_version = "2.4.2"
 
@@ -87,10 +77,21 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-
+    // contributionsview
     implementation 'com.barryzhang:tcontributionsview:0.2'
-
+    //glide工具
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    //viewpager2依赖
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //对layout实现圆角的依赖
+    implementation 'io.github.csdn-mobile:RoundView:1.7.1'
+    //导入RecyclerView依赖
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //eventBus
     implementation 'org.greenrobot:eventbus:3.0.0'
+    //superbutton
+    implementation 'top.androidman:superbutton:1.0.1'
 
 }

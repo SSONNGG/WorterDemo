@@ -45,7 +45,6 @@ public class StudyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -62,7 +61,7 @@ public class StudyFragment extends Fragment {
     }
 
     private void bindButtonChange() {
-        Button btnNext=rootView.findViewById(R.id.btn_next);
+        top.androidman.SuperButton btnNext=rootView.findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

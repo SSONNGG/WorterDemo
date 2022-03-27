@@ -19,6 +19,7 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.WordAndSymbol;
+import com.song.worterdemo.fragment.ChoiceFragment;
 import com.song.worterdemo.fragment.StudyFragment;
 import com.song.worterdemo.utils.StatusBarUtil;
 
@@ -52,9 +53,15 @@ public class StudyActivity extends AppCompatActivity {
         int n=wordAndSymbols.size();
         viewPager=findViewById(R.id.id_studyViewPage);
         for(int i=0;i<n;i++){
-            fragments.add(StudyFragment.newInstance());
+            if(i%2==0){
+                fragments.add(StudyFragment.newInstance());
+            }else{
+                fragments.add(ChoiceFragment.newInstance());
+            }
+
         }
         pageAdapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
+        viewPager.setUserInputEnabled(false);
         viewPager.setAdapter(pageAdapter);
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -76,7 +83,7 @@ public class StudyActivity extends AppCompatActivity {
     }
 
     public void changePage(){
-        if(viewPager.getCurrentItem()==pageAdapter.getItemCount()-1){
+        if(viewPager.getCurrentItem()==pageAdapter.getItemCount()-1){   //当前item等于总item数目时，完成业务：显示学习完成界面。
             Toast.makeText(getApplicationContext(),"已经到最后一页啦",Toast.LENGTH_SHORT).show();
         }else{
             viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
