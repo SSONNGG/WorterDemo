@@ -2,10 +2,12 @@ package com.song.worterdemo.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,9 +20,14 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.activity.ArticleActivity;
 import com.song.worterdemo.adapter.ArticleRecyclerViewAdapter;
 import com.song.worterdemo.entity.ArticleTempo;
+import com.song.worterdemo.utils.DateUtil;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 //本源
 public class MainFragment extends Fragment{
@@ -61,6 +68,7 @@ public class MainFragment extends Fragment{
         if(rootView==null){
             rootView= inflater.inflate(R.layout.fragment_main, container, false);
         }
+        bindingTime();
         //对recycleview进行配置
         initRecyclerView();
         //模拟数据
@@ -77,6 +85,16 @@ public class MainFragment extends Fragment{
         });
         return rootView;
 
+    }
+
+    private void bindingTime() {
+        TextView tv_date=rootView.findViewById(R.id.tv_date);
+        TextView tv_weekday=rootView.findViewById(R.id.tv_weekday);
+        DateUtil util=new DateUtil();
+        String date=util.TransMonth(Calendar.getInstance().get(Calendar.MONTH))+" "+util.TransDay(Calendar.getInstance().get(Calendar.DATE-1));
+        String weekday=util.TransWeek(Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-1);
+        tv_date.setText(date);
+        tv_weekday.setText(weekday);
     }
 
     /*
