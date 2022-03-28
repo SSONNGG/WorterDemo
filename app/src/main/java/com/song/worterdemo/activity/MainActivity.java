@@ -24,6 +24,7 @@ import com.song.worterdemo.fragment.MyFragment;
 import com.song.worterdemo.fragment.OriginalFragment;
 import com.song.worterdemo.fragment.SearchFragment;
 import com.song.worterdemo.utils.DatabaseUtil;
+import com.song.worterdemo.utils.DateUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                Log.e("TAG", "onChanged: "+wordAndSymbols.toString() );
 //            }
 //        });
+        DateUtil util=new DateUtil();
+        Log.e("TAG", "onCreate: "+util.TransNumToCN(2028) );
 
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
@@ -105,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ivMy.setSelected(true);
                 ivCurrent=ivMy;
                 break;
-
         }
     }
 
