@@ -38,8 +38,6 @@
     <string name="study_alphabet">字母及其字母组合</string>
     <string name="study_pronun">发音</string>
     <string name="study_btngo">继续</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -52,14 +52,15 @@ public class StudyActivity extends AppCompatActivity {
     private void initPage() {
         int n=wordAndSymbols.size();
         viewPager=findViewById(R.id.id_studyViewPage);
+        //获取字符串数据，根据字符串数据判断应该调用哪一种界面。
         for(int i=0;i<n;i++){
             if(i%2==0){
                 fragments.add(StudyFragment.newInstance());
             }else{
                 fragments.add(ChoiceFragment.newInstance());
             }
-
         }
+
         pageAdapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
         viewPager.setUserInputEnabled(false);
         viewPager.setAdapter(pageAdapter);

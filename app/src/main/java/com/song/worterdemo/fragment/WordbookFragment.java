@@ -72,7 +72,7 @@ public class WordbookFragment extends Fragment {
         adapter.setOnItemClickListener(new WordbookRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(View view, WordAndSymbol data) {
-                Toast.makeText(getActivity(),data.getWordTrans(),Toast.LENGTH_SHORT).show();
+                showDialog(data);
             }
         });
 
@@ -92,6 +92,11 @@ public class WordbookFragment extends Fragment {
             wordAndSymbol.setIsraw(1);
             wordAndSymbols.add(wordAndSymbol);
         }
+    }
 
+    private void showDialog(WordAndSymbol data) {
+        WordDialogFragment dialogFragment=new WordDialogFragment();
+        dialogFragment.setData(data);
+        dialogFragment.show(getChildFragmentManager(),null);
     }
 }

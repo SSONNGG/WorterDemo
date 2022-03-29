@@ -13,32 +13,30 @@ import androidx.fragment.app.DialogFragment;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.WordAndSymbol;
 
-public class SymbolDialogFragment  extends DialogFragment {
-
-    Symbol data;
+public class WordDialogFragment extends DialogFragment {
     View rootView;
-    TextView symbol;
-    TextView pronun;
-    TextView alphabet;
+    WordAndSymbol data;
+    TextView tvWord;
+    TextView tvUkSymbol;
+    TextView tvUsSymbol;
+    TextView tvTrans;
 
-    public void setData(Symbol data){
+    public void setData(WordAndSymbol data){
         this.data=data;
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(rootView==null){
-            rootView= inflater.inflate(R.layout.dialog_symbol, container);
+        if (rootView==null){
+            rootView=inflater.inflate(R.layout.dialog_wordbook,container);
         }
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);  // 去掉Title布局
         getDialog().getWindow().setBackgroundDrawableResource(R.drawable.round_rectangle_dialog);
@@ -46,13 +44,14 @@ public class SymbolDialogFragment  extends DialogFragment {
         return rootView;
     }
 
-    //绑定数据
-    public void initData(){
-        symbol=rootView.findViewById(R.id.symbol_content);
-        pronun=rootView.findViewById(R.id.symbol_pronun);
-        alphabet=rootView.findViewById(R.id.symbol_alphabet);
-        symbol.setText(data.getSymbolContent());
-        pronun.setText(data.getSymbolPronun());
-        alphabet.setText(data.getSymbolAlphabet());
+    private void initData() {
+        tvWord=rootView.findViewById(R.id.tv_dialog_word);
+        tvUkSymbol=rootView.findViewById(R.id.tv_dialog_uk_symbol);
+        tvUsSymbol=rootView.findViewById(R.id.tv_dialog_us_symbol);
+        tvTrans=rootView.findViewById(R.id.tv_dialog_wordtrans);
+        tvWord.setText(data.getWordContent());
+        tvUkSymbol.setText(data.getUkSymbol());
+        tvUsSymbol.setText(data.getUsaSymbol());
+        tvTrans.setText(data.getWordTrans());
     }
 }
