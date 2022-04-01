@@ -18,6 +18,7 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
 import com.song.worterdemo.fragment.MainFragment;
 import com.song.worterdemo.fragment.MyFragment;
@@ -27,6 +28,7 @@ import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.DateUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
+import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
 import com.song.worterdemo.viewmodel.WordViewModel;
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    WordViewModel viewModel;
+    SymbolQuestionViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +56,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
 
-        viewModel=new ViewModelProvider(this).get(WordViewModel.class);
-//        viewModel.getWordBySymbolId(1).observe(this, new Observer<List<WordAndSymbol>>() {
-//            @Override
-//            public void onChanged(List<WordAndSymbol> wordAndSymbols) {
-//                Log.e("TAG", "onChanged: "+wordAndSymbols.toString() );
-//            }
-//        });
-        DateUtil util=new DateUtil();
-        Log.e("TAG", "onCreate: "+util.TransNumToCN(2028) );
+        viewModel=new ViewModelProvider(this).get(SymbolQuestionViewModel.class);
+        viewModel.getAllSymbolQuestion().observe(this, new Observer<List<SymbolQuestion>>() {
+            @Override
+            public void onChanged(List<SymbolQuestion> symbolQuestions) {
+                Log.e("TAG", "onChanged: "+symbolQuestions.toString() );
+            }
+        });
 
+        DateUtil util=new DateUtil();
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();

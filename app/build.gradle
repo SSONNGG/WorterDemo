@@ -93,5 +93,8 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.0.0'
     //superbutton
     implementation 'top.androidman:superbutton:1.0.1'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 
 }

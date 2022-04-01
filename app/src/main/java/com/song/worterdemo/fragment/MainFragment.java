@@ -91,7 +91,7 @@ public class MainFragment extends Fragment{
         TextView tv_date=rootView.findViewById(R.id.tv_date);
         TextView tv_weekday=rootView.findViewById(R.id.tv_weekday);
         DateUtil util=new DateUtil();
-        String date=util.TransMonth(Calendar.getInstance().get(Calendar.MONTH))+" "+util.TransDay(Calendar.getInstance().get(Calendar.DATE-1));
+        String date=util.TransMonth(Calendar.getInstance().get(Calendar.MONTH))+" "+util.TransDay(Calendar.getInstance().get(Calendar.DATE)-1);
         String weekday=util.TransWeek(Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-1);
         tv_date.setText(date);
         tv_weekday.setText(weekday);

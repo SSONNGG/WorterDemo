@@ -45,7 +45,4 @@ public interface WordDao {
     @Query("update word set israw=:israw where word_id= :id")
     public void updateWordIsraw(Integer israw,Integer id);
 
-
-
-
 }

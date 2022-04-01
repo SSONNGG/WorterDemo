@@ -9,16 +9,22 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.song.worterdemo.dao.AlphabetDao;
+import com.song.worterdemo.dao.OtherQuestionDao;
 import com.song.worterdemo.dao.SymbolDao;
+import com.song.worterdemo.dao.SymbolQuestionDao;
 import com.song.worterdemo.dao.WordDao;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.OtherQuestion;
 import com.song.worterdemo.entity.Review;
 import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.Word;
 import com.song.worterdemo.entity.WordAndSymbol;
 
+import java.io.File;
+
 //Alphabet表的数据库管理类
-@Database(entities = {Alphabet.class, Symbol.class,Word.class},version = 2,exportSchema = false)
+@Database(entities = {Alphabet.class, Symbol.class,Word.class, SymbolQuestion.class, OtherQuestion.class},version = 2,exportSchema = false)
 public abstract class WorterDatabase extends RoomDatabase {
 
     private static final String ALPHA_DATABASE = "worter.db";
@@ -32,6 +38,7 @@ public abstract class WorterDatabase extends RoomDatabase {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             // 因为没有变化，所以是一个空实现
+            database.execSQL("");
         }
     };
 
@@ -47,9 +54,12 @@ public abstract class WorterDatabase extends RoomDatabase {
 
     public abstract AlphabetDao getAlphabetDao();
 
-
     public abstract SymbolDao getSymbolDao();
 
     public abstract WordDao getWordDao();
+
+    public abstract SymbolQuestionDao getSymbolQuestionDao();
+
+    public abstract OtherQuestionDao getOtherQuestionDao();
 
 }
