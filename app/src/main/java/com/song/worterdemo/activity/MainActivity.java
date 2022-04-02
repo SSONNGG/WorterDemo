@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.OtherQuestion;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
@@ -28,6 +29,7 @@ import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.DateUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
+import com.song.worterdemo.viewmodel.OtherQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
 import com.song.worterdemo.viewmodel.WordViewModel;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    SymbolQuestionViewModel viewModel;
+    OtherQuestionViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +58,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
 
-        viewModel=new ViewModelProvider(this).get(SymbolQuestionViewModel.class);
-        viewModel.getAllSymbolQuestion().observe(this, new Observer<List<SymbolQuestion>>() {
-            @Override
-            public void onChanged(List<SymbolQuestion> symbolQuestions) {
-                Log.e("TAG", "onChanged: "+symbolQuestions.toString() );
-            }
-        });
+//        viewModel=new ViewModelProvider(this).get(OtherQuestionViewModel.class);
+//        viewModel.getAllOtherQuestion().observe(this, new Observer<List<OtherQuestion>>() {
+//            @Override
+//            public void onChanged(List<OtherQuestion> otherQuestions) {
+//                Log.e("TAG", "onChanged: "+otherQuestions.toString() );
+//            }
+//        });
 
         DateUtil util=new DateUtil();
         //需要切换颜色就调用

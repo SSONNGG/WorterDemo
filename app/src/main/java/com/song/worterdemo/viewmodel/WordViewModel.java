@@ -27,19 +27,19 @@ public class WordViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<WordAndSymbol>> getWordBook(Integer... israw){
-        return  repository.getWordBook(israw);
+        return repository.getWordBook(israw);
     }
 
     public LiveData<List<WordAndSymbol>> getWordBySymbolId(Integer... symbolId){
-        return  repository.getWordBySymbolId(symbolId);
+        return repository.getWordBySymbolId(symbolId);
     }
 
     public LiveData<List<WordAndSymbol>> getWordByWordId(Integer... wordId){
-        return  repository.getWordByWordId(wordId);
+        return repository.getWordByWordId(wordId);
     }
 
     public LiveData<List<WordAndSymbol>> getWordByWordGroup(Integer... group){
-        return  repository.getWordByGroup(group);
+        return repository.getWordByGroup(group);
     }
 
     public void updateWordIsraw(Integer israw,Integer id){

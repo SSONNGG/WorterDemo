@@ -13,5 +13,19 @@ import java.util.List;
 public interface OtherQuestionDao {
 
     @Query("select * from other_question")
-    public LiveData<List<OtherQuestion>> getAllOtherQuestion();
+    LiveData<List<OtherQuestion>> getAllOtherQuestion();
+
+    @Query("select * from other_question where other_question_id=:id")
+    LiveData<List<OtherQuestion>> getOtherQuestionById(Integer... id);
+
+    @Query("select * from other_question where other_question_cate=:category")
+    LiveData<List<OtherQuestion>> getOtherQuestionByCate(Integer... category);
+
+    @Query("update other_question set other_question_israw=:israw where other_question_id= :id")
+    void updateOtherQuestionIsraw(Integer israw,Integer id);
+
+    //查询所有已学习的
+    @Query("select * from other_question where other_question_israw=1")
+    LiveData<List<OtherQuestion>> getSymbolQuestionIsraw();
+
 }

@@ -10,9 +10,11 @@ import com.song.worterdemo.db.WorterDatabase;
 import com.song.worterdemo.entity.SymbolQuestion;
 
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class SymbolQuestionRepository {
-
+    private final Executor executor = Executors.newFixedThreadPool(2);  //开线程池
     private LiveData<List<SymbolQuestion>> questionList;
     private SymbolQuestionDao dao;
 
@@ -24,6 +26,38 @@ public class SymbolQuestionRepository {
 
     public LiveData<List<SymbolQuestion>> getAllSymbolQuestion(){
         questionList=dao.getAllSymbolQuestion();
+        return questionList;
+    }
+
+    public LiveData<List<SymbolQuestion>> getSymbolQuestionBySymbolId(Integer... symbolId) {
+        questionList=dao.getSymbolQuestionBySymbolId(symbolId);
+        return questionList;
+    }
+
+    public LiveData<List<SymbolQuestion>> getSymbolQuestionById(Integer... id){
+        questionList=dao.getSymbolQuestionById(id);
+        return questionList;
+    }
+
+    public void updateSymbolQuestionIsraw(Integer israw,Integer id){
+        executor.execute(()->{
+            dao.updateSymbolQuestionIsraw(israw,id);
+        });
+    }
+
+    public void updateSymbolQuestionIsReview(Integer isreview,Integer id){
+        executor.execute(()->{
+            dao.updateSymbolQuestionIsReview(isreview,id);
+        });
+    }
+
+    public LiveData<List<SymbolQuestion>> getSymbolQuestionIsraw() {
+        questionList=dao.getSymbolQuestionIsraw();
+        return questionList;
+    }
+
+    public LiveData<List<SymbolQuestion>> getSymbolQuestionIsreview() {
+        questionList=dao.getSymbolQuestionIsreview();
         return questionList;
     }
 
