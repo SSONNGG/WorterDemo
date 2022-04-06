@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.entity.OtherQuestion;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
@@ -29,6 +31,7 @@ import com.song.worterdemo.utils.DatabaseUtil;
 import com.song.worterdemo.utils.DateUtil;
 import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
+import com.song.worterdemo.viewmodel.ArticleViewModel;
 import com.song.worterdemo.viewmodel.OtherQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
@@ -48,7 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    OtherQuestionViewModel viewModel;
+    ArticleViewModel viewModel;
+    //SP文件
+    TextView tv_symbol_group;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
 
-//        viewModel=new ViewModelProvider(this).get(OtherQuestionViewModel.class);
-//        viewModel.getAllOtherQuestion().observe(this, new Observer<List<OtherQuestion>>() {
+//
+//        viewModel=new ViewModelProvider(this).get(ArticleViewModel.class);
+//        viewModel.getAllArticle().observe(this, new Observer<List<Article>>() {
 //            @Override
-//            public void onChanged(List<OtherQuestion> otherQuestions) {
+//            public void onChanged(List<Article> otherQuestions) {
 //                Log.e("TAG", "onChanged: "+otherQuestions.toString() );
 //            }
 //        });
@@ -176,11 +183,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param view
      */
     public void startStudy(View view) {
-        TextView textView=findViewById(R.id.tv_symbol); //获取标题
+        TextView textView=findViewById(R.id.tv_symbol_group);
         //创建Intent对象
         Intent intent=new Intent(this,StudyActivity.class);
-        intent.putExtra("title",textView.getText());
-
+        intent.putExtra("学习模式",textView.getText());
         startActivity(intent);
     }
 
@@ -192,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView textView=findViewById(R.id.tv_general); //获取标题
         //创建Intent对象
         Intent intent=new Intent(this,StudyActivity.class);
-        intent.putExtra("title",textView.getText());
+        intent.putExtra("复习模式",textView.getText());
         startActivity(intent);
     }
 

@@ -17,6 +17,7 @@
         android:layout_marginHorizontal="35dp">
 
         <TextView
+            android:id="@+id/tv_symbol_content"
             android:text="[ɑ:]"
             android:textColor="@color/white"
             android:textSize="34sp"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/tv_alphabet"
             android:text="ar,a"
             android:textColor="@color/white"
             android:textSize="34sp"
@@ -58,6 +60,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tv_symbol_pronun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

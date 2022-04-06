@@ -9,11 +9,13 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.song.worterdemo.dao.AlphabetDao;
+import com.song.worterdemo.dao.ArticleDao;
 import com.song.worterdemo.dao.OtherQuestionDao;
 import com.song.worterdemo.dao.SymbolDao;
 import com.song.worterdemo.dao.SymbolQuestionDao;
 import com.song.worterdemo.dao.WordDao;
 import com.song.worterdemo.entity.Alphabet;
+import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.entity.OtherQuestion;
 import com.song.worterdemo.entity.Review;
 import com.song.worterdemo.entity.Symbol;
@@ -24,7 +26,7 @@ import com.song.worterdemo.entity.WordAndSymbol;
 import java.io.File;
 
 //Alphabet表的数据库管理类
-@Database(entities = {Alphabet.class, Symbol.class,Word.class, SymbolQuestion.class, OtherQuestion.class},version = 2,exportSchema = false)
+@Database(entities = {Alphabet.class, Symbol.class,Word.class, SymbolQuestion.class, OtherQuestion.class, Article.class},version = 2,exportSchema = false)
 public abstract class WorterDatabase extends RoomDatabase {
 
     private static final String ALPHA_DATABASE = "worter.db";
@@ -46,7 +48,7 @@ public abstract class WorterDatabase extends RoomDatabase {
         if(database==null){
             database= Room.databaseBuilder(context.getApplicationContext(),WorterDatabase.class,ALPHA_DATABASE)
                     .addMigrations(MIGRATION_1_2)
-                    .allowMainThreadQueries()   //强制开启主线程
+                    //.allowMainThreadQueries()   //强制开启主线程
                     .build();
         }
         return database;
@@ -61,5 +63,7 @@ public abstract class WorterDatabase extends RoomDatabase {
     public abstract SymbolQuestionDao getSymbolQuestionDao();
 
     public abstract OtherQuestionDao getOtherQuestionDao();
+
+    public abstract ArticleDao getArticleDao();
 
 }

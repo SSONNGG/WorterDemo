@@ -1,6 +1,7 @@
 package com.song.worterdemo.repository;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -9,6 +10,8 @@ import com.song.worterdemo.db.WorterDatabase;
 import com.song.worterdemo.entity.Symbol;
 
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class SymbolRepository {
     private LiveData<List<Symbol>> symbolLive;
@@ -19,8 +22,12 @@ public class SymbolRepository {
         dao=database.getSymbolDao();
     }
 
+    public LiveData<List<Symbol>> getSymbolLive() {
+        return symbolLive;
+    }
+
     public LiveData<List<Symbol>> getAllSymbolLive(){
-        symbolLive=dao.getAllSymbol();
+        symbolLive=dao.getAllSymbolLive();
         return symbolLive;
     }
 
@@ -38,6 +45,9 @@ public class SymbolRepository {
         symbolLive=dao.getSymbolById(id);
         return symbolLive;
     }
+
+
+
 
 
 }

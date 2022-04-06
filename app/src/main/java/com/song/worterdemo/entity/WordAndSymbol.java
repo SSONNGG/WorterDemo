@@ -34,7 +34,7 @@ public class WordAndSymbol implements Serializable {
     private String usaSymbol;
     @ColumnInfo(name = "symbol_id")
     @NonNull
-    private int symbolId;   //外键
+    private int symbolId;
     @ColumnInfo(name = "symbol_content")
     @NonNull
     private String symbolContent;

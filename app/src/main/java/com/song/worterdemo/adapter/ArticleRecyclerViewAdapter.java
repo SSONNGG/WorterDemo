@@ -10,17 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
-import com.song.worterdemo.entity.ArticleTempo;
+import com.song.worterdemo.entity.Article;
 
 import java.util.List;
 
 public class ArticleRecyclerViewAdapter extends RecyclerView.Adapter<ArticleRecyclerViewAdapter.MyViewHolder> {
 
 
-    private List<ArticleTempo> data;
+    private List<Article> data;
     private Context context;
 
-    public ArticleRecyclerViewAdapter(List<ArticleTempo> data, Context context) {
+    public ArticleRecyclerViewAdapter(List<Article> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -72,8 +72,8 @@ public class ArticleRecyclerViewAdapter extends RecyclerView.Adapter<ArticleRecy
      */
     @Override
     public void onBindViewHolder(@NonNull ArticleRecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.title_main.setText(data.get(position).getTitleMain());
-        holder.title_sub.setText(data.get(position).getTitleSub());
+        holder.title_main.setText(data.get(position).getArticleTitle());
+        holder.title_sub.setText(data.get(position).getArticleSubTitle());
         holder.content.setText(data.get(position).getArticleContent());
 
     }
@@ -94,7 +94,7 @@ public class ArticleRecyclerViewAdapter extends RecyclerView.Adapter<ArticleRecy
          * @param view 点击的item的视图
          * @param data 点击的item的数据
          */
-        public void OnItemClick(View view, ArticleTempo data);
+        public void OnItemClick(View view, Article data);
     }
 
     //需要外部访问，所以需要设置set方法，方便调用

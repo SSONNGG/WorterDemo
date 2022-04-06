@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
@@ -18,11 +20,15 @@ import android.widget.Toast;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.StudyActivity;
+import com.song.worterdemo.entity.Symbol;
+import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
+import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +38,6 @@ import java.util.List;
  */
 public class StudyFragment extends Fragment {
     View rootView;
-    TextView tv;
 
     public StudyFragment() {
     }
@@ -50,7 +55,6 @@ public class StudyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         if(rootView==null){
             rootView=inflater.inflate(R.layout.fragment_study, container, false);
         }
@@ -65,7 +69,6 @@ public class StudyFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getContext(),"button按下",Toast.LENGTH_SHORT).show();
                 ((StudyActivity)getActivity()).changePage();
             }
         });
@@ -73,10 +76,13 @@ public class StudyFragment extends Fragment {
 
     //订阅并绑定数据到控件
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void onEvent(WordAndSymbol data){
-    //    Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
-    //        tv=rootView.findViewById(R.id.id);
-    //        tv.setText(data.toString());
+    public void onEvent(Symbol data){
+        TextView tv_symbol=rootView.findViewById(R.id.tv_symbol_content);
+        tv_symbol.setText(data.getSymbolContent());
+        TextView tv_alphabet=rootView.findViewById(R.id.tv_alphabet);
+        tv_alphabet.setText(data.getSymbolAlphabet());
+        TextView tv_pronun=rootView.findViewById(R.id.tv_symbol_pronun);
+        tv_pronun.setText(data.getSymbolPronun());
     }
 
     @Override

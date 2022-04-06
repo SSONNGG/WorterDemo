@@ -1,33 +1,33 @@
 package com.song.worterdemo.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.ArticleActivity;
+import com.song.worterdemo.activity.ArticleInfoActivity;
 import com.song.worterdemo.adapter.ArticleRecyclerViewAdapter;
-import com.song.worterdemo.entity.ArticleTempo;
+import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.utils.DateUtil;
+import com.song.worterdemo.viewmodel.ArticleViewModel;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 //本源
 public class MainFragment extends Fragment{
@@ -36,7 +36,6 @@ public class MainFragment extends Fragment{
 
     public RecyclerView recyclerView;//定义RecyclerView
 
-    private List<ArticleTempo> article=new ArrayList<>();   //临时数据
     //自定义recyclerveiw的适配器
     private ArticleRecyclerViewAdapter adapter;
 
@@ -58,8 +57,6 @@ public class MainFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Nullable
@@ -68,9 +65,13 @@ public class MainFragment extends Fragment{
         if(rootView==null){
             rootView= inflater.inflate(R.layout.fragment_main, container, false);
         }
+
         bindingTime();
         //对recycleview进行配置
-        initRecyclerView();
+//        initRecyclerView();
+        //绑定文章
+        bingdingArticle();
+
         //模拟数据
         initData();
 
@@ -87,6 +88,35 @@ public class MainFragment extends Fragment{
 
     }
 
+    private void bingdingArticle() {
+        ArticleViewModel viewModel=new ViewModelProvider(this).get(ArticleViewModel.class);
+        viewModel.getArticleIndex().observe(getActivity(), new Observer<List<Article>>() {
+            @Override
+            public void onChanged(List<Article> articles) {
+                //获取
+                recyclerView=rootView.findViewById(R.id.rv_article);
+                //创建Adapter
+                adapter=new ArticleRecyclerViewAdapter(articles,getActivity());
+                //设置Adapter
+                recyclerView.setAdapter(adapter);
+                //设置layoutManager
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+                //设置监听事件
+                adapter.setOnItemClickListener(new ArticleRecyclerViewAdapter.OnItemClickListener() {
+                    @Override
+                    public void OnItemClick(View view, Article data) {
+                        //监听事件业务处理
+                        Intent intent=new Intent(getActivity(), ArticleInfoActivity.class);
+                        Bundle bundle=new Bundle();
+                        bundle.putSerializable("article",data);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+    }
+
     private void bindingTime() {
         TextView tv_date=rootView.findViewById(R.id.tv_date);
         TextView tv_weekday=rootView.findViewById(R.id.tv_weekday);
@@ -101,35 +131,12 @@ public class MainFragment extends Fragment{
      * 模拟数据
      */
     private void initData(){
-        for(int i=0;i<3;i++){
-            ArticleTempo tempo=new ArticleTempo();
-            tempo.setTitleMain("古英语");
-            tempo.setTitleSub("公元550-1066年");
-            tempo.setArticleContent("由一组北海日耳曼方言发展而成的，这些方言最初是由日耳曼部落在弗里西亚，下萨克森，日德兰和瑞典南部沿海地区所说的。");
-            article.add(tempo);
-        }
-    }
+        SharedPreferences sp= this.getActivity().getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
+        //获取SP文件,默认为1
+        int SymbolGroup=sp.getInt("SymbolGroup",1);
+        TextView tv_symbol_group=rootView.findViewById(R.id.tv_symbol_group);
+        tv_symbol_group.setText("第 "+SymbolGroup+" 组音标");
 
-    /**
-     * 对Recyleview进行配置
-     */
-    private void initRecyclerView(){
-        //获取
-        recyclerView=rootView.findViewById(R.id.rv_article);
-        //创建Adapter
-        adapter=new ArticleRecyclerViewAdapter(article,getActivity());
-        //设置Adapter
-        recyclerView.setAdapter(adapter);
-        //设置layoutManager
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        //设置监听事件
-        adapter.setOnItemClickListener(new ArticleRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(View view, ArticleTempo data) {
-                //监听事件业务处理
-                Toast.makeText(getActivity(),"我是item", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 }

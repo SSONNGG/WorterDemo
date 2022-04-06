@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
+
+    <style name="Theme.WorterDemo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WorterDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WorterDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

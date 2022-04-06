@@ -35,4 +35,5 @@ public class SymbolViewModel extends AndroidViewModel {
     public LiveData<List<Symbol>> getSymbolById(Integer... id){
         return repository.getSymbolById(id);
     }
+
 }

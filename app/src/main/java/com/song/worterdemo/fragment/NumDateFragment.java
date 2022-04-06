@@ -84,7 +84,6 @@ public class NumDateFragment extends Fragment {
         tvmonthsecond=rootView.findViewById(R.id.tv_month_second);
         tvdayfirst=rootView.findViewById(R.id.tv_day_first);
         tvdaysecond=rootView.findViewById(R.id.tv_day_second);
-
     }
 
 
@@ -110,12 +109,10 @@ public class NumDateFragment extends Fragment {
             etnum.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 }
                 @Override
                 public void afterTextChanged(Editable s) {

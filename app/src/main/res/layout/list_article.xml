@@ -30,6 +30,8 @@
         android:id="@+id/tv_content"
         android:textColor="@color/black_second"
         android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

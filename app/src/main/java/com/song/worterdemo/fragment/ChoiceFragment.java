@@ -14,12 +14,14 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.StudyActivity;
+import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,6 +29,7 @@ import java.util.TimerTask;
  * 选择题的fragment
  */
 public class ChoiceFragment extends Fragment {
+
     View rootView;
 
     ChipGroup chipGroup;
@@ -107,14 +110,13 @@ public class ChoiceFragment extends Fragment {
         };
         Timer timer = new Timer();
         timer.schedule(task, 1000);//3秒后执行TimeTask的run方法
-
     }
 
 
     //订阅并绑定数据到控件
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void onEvent(WordAndSymbol data){
-           // Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
+        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
 //               tv=rootView.findViewById(R.id.id);
 //               tv.setText(data.toString());
     }

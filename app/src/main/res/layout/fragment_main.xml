@@ -109,7 +109,7 @@
                             android:textSize="40sp" />
 
                         <TextView
-                            android:id="@+id/tv_symbol"
+                            android:id="@+id/tv_symbol_group"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="5dp"

@@ -195,7 +195,6 @@ public class DateUtil {
         if (isNegative)
             sb.insert(0, CN_NEGATIVE);
 
-
         return sb.toString().replaceAll("零[千百十]", "零").replaceAll("零+万", "万")
                 .replaceAll("零+亿", "亿").replaceAll("亿万", "亿零")
                 .replaceAll("零+", "零").replaceAll("零$", "");
