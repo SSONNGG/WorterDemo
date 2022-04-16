@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.song.worterdemo.entity.QuestionVO;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.repository.SymbolQuestionRepository;
 
@@ -46,4 +47,13 @@ public class SymbolQuestionViewModel extends AndroidViewModel {
     public LiveData<List<SymbolQuestion>> getSymbolQuestionIsreview() {
         return repository.getSymbolQuestionIsreview();
     }
+
+    public LiveData<List<QuestionVO>> getSymbolQuestionStudyByGroup(Integer... group){
+        return repository.getSymbolQuestionStudyByGroup(group);
+    }
+
+    public List<SymbolQuestion> getSymbolQuestionListBySymbolId(Integer... group){
+        return repository.getSymbolQuestionListBySymbolId(group);
+    }
+
 }

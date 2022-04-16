@@ -17,6 +17,7 @@
         android:layout_marginHorizontal="35dp">
 
         <TextView
+            android:id="@+id/tv_choice_title"
             android:text="[ɑ:]"
             android:textColor="@color/white"
             android:textSize="34sp"

@@ -20,6 +20,7 @@ import com.song.worterdemo.adapter.MyFragmentPageAdapter;
 import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.entity.OtherQuestion;
+import com.song.worterdemo.entity.QuestionVO;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
@@ -51,9 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    ArticleViewModel viewModel;
+    WordViewModel viewModel;
     //SP文件
-    TextView tv_symbol_group;
+
 
 
     @Override
@@ -63,17 +64,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //从数据库文件导入数据库
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
+//        viewModel=new ViewModelProvider(this).get(WordViewModel.class);
+//        viewModel.updateWordIsraw(1,1);
+//        viewModel.updateWordIsraw(1,2);
+//        viewModel.updateWordIsraw(1,8);
+//        viewModel.updateWordIsraw(1,12);
+//        viewModel.updateWordIsraw(1,27);
+//        viewModel.updateWordIsraw(1,16);
+//        viewModel.updateWordIsraw(1,29);
+//        viewModel.updateWordIsraw(1,31);
+//        viewModel.updateWordIsraw(1,91);
+//        viewModel.updateWordIsraw(1,100);
 
-//
-//        viewModel=new ViewModelProvider(this).get(ArticleViewModel.class);
-//        viewModel.getAllArticle().observe(this, new Observer<List<Article>>() {
-//            @Override
-//            public void onChanged(List<Article> otherQuestions) {
-//                Log.e("TAG", "onChanged: "+otherQuestions.toString() );
-//            }
-//        });
-
-        DateUtil util=new DateUtil();
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
@@ -183,10 +185,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param view
      */
     public void startStudy(View view) {
-        TextView textView=findViewById(R.id.tv_symbol_group);
         //创建Intent对象
         Intent intent=new Intent(this,StudyActivity.class);
-        intent.putExtra("学习模式",textView.getText());
+        intent.putExtra("mode","StudyMode");
         startActivity(intent);
     }
 
@@ -195,15 +196,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param view
      */
     public void generalStudy(View view) {
-        TextView textView=findViewById(R.id.tv_general); //获取标题
         //创建Intent对象
         Intent intent=new Intent(this,StudyActivity.class);
-        intent.putExtra("复习模式",textView.getText());
+        intent.putExtra("mode","ReviewMode");
         startActivity(intent);
     }
 
 
+    public void trainSpell(View view) {
+        //创建Intent对象
+        Intent intent=new Intent(this,StudyActivity.class);
+        intent.putExtra("mode","SpellEnglishMode");
+        startActivity(intent);
+    }
 
+    public void trainNum(View view) {
+        //创建Intent对象
+        Intent intent=new Intent(this,StudyActivity.class);
+        intent.putExtra("mode","NumMode");
+        startActivity(intent);
+    }
 
+    public void trainDate(View view) {
+        //创建Intent对象
+        Intent intent=new Intent(this,StudyActivity.class);
+        intent.putExtra("mode","DateMode");
+        startActivity(intent);
+    }
 
+    public void trainFreedom(View view) {
+        //创建Intent对象
+        Intent intent=new Intent(this,StudyActivity.class);
+        intent.putExtra("mode","FreedomMode");
+        startActivity(intent);
+    }
 }

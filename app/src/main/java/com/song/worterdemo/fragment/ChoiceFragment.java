@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.song.worterdemo.R;
 import com.song.worterdemo.activity.StudyActivity;
+import com.song.worterdemo.entity.QuestionVO;
+import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
 
@@ -56,8 +59,8 @@ public class ChoiceFragment extends Fragment {
             rootView=inflater.inflate(R.layout.fragment_choice, container, false);
         }
         //注册
-        ChoiceChip();
         EventBus.getDefault().register(this);
+        ChoiceChip();
         return rootView;
     }
 
@@ -92,7 +95,7 @@ public class ChoiceFragment extends Fragment {
                         show="没有选中内容";
                         break;
                 }
-                Toast.makeText(getContext(), show, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), show, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -102,9 +105,7 @@ public class ChoiceFragment extends Fragment {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                /**
-                 * 切换页面
-                 */
+                 //切换页面
                 ((StudyActivity)getActivity()).changePage();
             }
         };
@@ -115,10 +116,18 @@ public class ChoiceFragment extends Fragment {
 
     //订阅并绑定数据到控件
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void onEvent(WordAndSymbol data){
-        Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
-//               tv=rootView.findViewById(R.id.id);
-//               tv.setText(data.toString());
+    public void onEvent(QuestionVO data){
+        //Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
+        TextView tv_symbol=rootView.findViewById(R.id.tv_choice_title);
+        tv_symbol.setText(data.getSymbolQuestionContent());
+        Chip chip01=rootView.findViewById(R.id.chip_choice01);
+        chip01.setText(data.getAnswerOne());
+        Chip chip02=rootView.findViewById(R.id.chip_choice02);
+        chip02.setText(data.getAnswerTwo());
+        Chip chip03=rootView.findViewById(R.id.chip_choice03);
+        chip01.setText(data.getAnswerThree());
+        Chip chip04=rootView.findViewById(R.id.chip_choice04);
+        chip01.setText(data.getAnswerFour());
     }
 
     @Override

@@ -91,7 +91,6 @@
                     android:elevation="10dp"
                     android:onClick="startStudy"
                     android:orientation="horizontal">
-
                     <!--left-->
                     <LinearLayout
                         android:layout_width="fill_parent"

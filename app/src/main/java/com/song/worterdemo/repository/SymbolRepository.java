@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.song.worterdemo.dao.SymbolDao;
 import com.song.worterdemo.db.WorterDatabase;
@@ -15,6 +16,7 @@ import java.util.concurrent.Executors;
 
 public class SymbolRepository {
     private LiveData<List<Symbol>> symbolLive;
+    private List<Symbol> symbols;
     private SymbolDao dao;
 
     public SymbolRepository(Context context) {
@@ -34,6 +36,7 @@ public class SymbolRepository {
     public LiveData<List<Symbol>> getSymbolByGroup(Integer... group){
         symbolLive=dao.getSymbolByGroup(group);
         return symbolLive;
+
     }
 
     public LiveData<List<Symbol>> getSymbolByCate(String... cate){
@@ -45,6 +48,9 @@ public class SymbolRepository {
         symbolLive=dao.getSymbolById(id);
         return symbolLive;
     }
+
+
+
 
 
 
