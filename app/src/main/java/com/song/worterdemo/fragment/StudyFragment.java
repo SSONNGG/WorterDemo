@@ -32,7 +32,6 @@ public class StudyFragment extends Fragment {
     private static final String ARG_PARAM = "param";
     private Integer mParam;
 
-
     public StudyFragment() {
     }
 
@@ -58,13 +57,25 @@ public class StudyFragment extends Fragment {
         if(rootView==null){
             rootView=inflater.inflate(R.layout.fragment_study, container, false);
         }
-        Log.e("TAG", "onCreate: "+mParam );
         setData();
         bindButtonChange();
         return rootView;
     }
 
 
+    private void setData(){
+        SymbolViewModel symbolViewModel=new ViewModelProvider(getActivity()).get(SymbolViewModel.class);
+        symbolViewModel.getSymbolById(mParam).observe(getActivity(),symbols -> {
+            //Log.e("TAG", "setData: "+symbols.get(0).toString() );
+            //Update UI
+            TextView tv_symbol=rootView.findViewById(R.id.tv_symbol_content);
+            tv_symbol.setText(symbols.get(0).getSymbolContent());
+            TextView tv_alphabet=rootView.findViewById(R.id.tv_alphabet);
+            tv_alphabet.setText(symbols.get(0).getSymbolAlphabet());
+            TextView tv_pronun=rootView.findViewById(R.id.tv_symbol_pronun);
+            tv_pronun.setText(symbols.get(0).getSymbolPronun());
+        });
+    }
 
     private void bindButtonChange() {
         top.androidman.SuperButton btnNext=rootView.findViewById(R.id.btn_next);
@@ -74,23 +85,6 @@ public class StudyFragment extends Fragment {
                 ((StudyActivity)getActivity()).changePage();
             }
         });
-    }
-
-    private void setData(){
-        SymbolViewModel symbolViewModel=new ViewModelProvider(getActivity()).get(SymbolViewModel.class);
-        symbolViewModel.getSymbolById(mParam).observe(getActivity(),symbols -> {
-            Log.e("TAG", "setData: "+symbols.get(0).toString() );
-            //Update UI
-            TextView tv_symbol=rootView.findViewById(R.id.tv_symbol_content);
-            tv_symbol.setText(symbols.get(0).getSymbolContent());
-            TextView tv_alphabet=rootView.findViewById(R.id.tv_alphabet);
-            tv_alphabet.setText(symbols.get(0).getSymbolAlphabet());
-            TextView tv_pronun=rootView.findViewById(R.id.tv_symbol_pronun);
-            tv_pronun.setText(symbols.get(0).getSymbolPronun());
-        });
-
-
-
     }
 
 

@@ -31,6 +31,10 @@ public class MyFragmentPageAdapter extends FragmentStateAdapter {
         return fragmentList.size();
     }
 
+    @Override
+    public boolean containsItem(long itemId) {
+        return itemId >= 0 && itemId < getItemCount();
+    }
 
 
 }

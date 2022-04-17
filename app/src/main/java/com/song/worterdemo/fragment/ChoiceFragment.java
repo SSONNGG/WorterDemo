@@ -3,6 +3,7 @@ package com.song.worterdemo.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.song.worterdemo.entity.QuestionVO;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
+import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -32,24 +34,32 @@ import java.util.TimerTask;
  * 选择题的fragment
  */
 public class ChoiceFragment extends Fragment {
-
     View rootView;
+    private static final String ARG_PARAM = "param";
+    private Integer mParam;
 
     ChipGroup chipGroup;
     Chip chip;
+
     public ChoiceFragment() {
 
     }
 
-
-    public static ChoiceFragment newInstance() {
+    public static ChoiceFragment newInstance(int id) {
         ChoiceFragment fragment = new ChoiceFragment();
+        Bundle args=new Bundle();
+        args.putInt(ARG_PARAM,id);
+        fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam = getArguments().getInt(ARG_PARAM);
+        }
     }
 
     @Override
@@ -59,12 +69,11 @@ public class ChoiceFragment extends Fragment {
             rootView=inflater.inflate(R.layout.fragment_choice, container, false);
         }
         //注册
-        EventBus.getDefault().register(this);
-        ChoiceChip();
+        setData();
         return rootView;
     }
 
-    public void ChoiceChip() {
+    public void ChoiceChip(String rightAnswer,int symbolId) {
         chipGroup=rootView.findViewById(R.id.chipgroup_choice);
         chipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
             @Override
@@ -74,34 +83,60 @@ public class ChoiceFragment extends Fragment {
                     case R.id.chip_choice01:
                         show="第一个选项";
                         chip=rootView.findViewById(R.id.chip_choice01);
-                        judgement(chip);
+                        judgement(chip,rightAnswer,symbolId);
                         break;
                     case R.id.chip_choice02:
                         show="第二个选项";
                         chip=rootView.findViewById(R.id.chip_choice02);
-                        judgement(chip);
+                        judgement(chip,rightAnswer,symbolId);
                         break;
                     case R.id.chip_choice03:
                         show="第三个选项";
                         chip=rootView.findViewById(R.id.chip_choice03);
-                        judgement(chip);
+                        judgement(chip,rightAnswer,symbolId);
                         break;
                     case R.id.chip_choice04:
                         show="第四个选项";
                         chip=rootView.findViewById(R.id.chip_choice04);
-                        judgement(chip);
+                        judgement(chip,rightAnswer,symbolId);
                         break;
                     default:
                         show="没有选中内容";
                         break;
                 }
-               // Toast.makeText(getContext(), show, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void judgement(Chip chip){
-        chip.setChipBackgroundColorResource(R.color.content_text_yellow);
+    //配置数据
+    public void setData() {
+        SymbolQuestionViewModel viewModel=new ViewModelProvider(getActivity()).get(SymbolQuestionViewModel.class);
+        viewModel.getSymbolQuestionBySymbolId(mParam).observe(getActivity(),questions->{
+            TextView tv_symbol=rootView.findViewById(R.id.tv_choice_title);
+            tv_symbol.setText(questions.get(0).getSymbolQuestionContent());
+            Chip chip01=rootView.findViewById(R.id.chip_choice01);
+            chip01.setText(questions.get(0).getAnswerOne());
+            Chip chip02=rootView.findViewById(R.id.chip_choice02);
+            chip02.setText(questions.get(0).getAnswerTwo());
+            Chip chip03=rootView.findViewById(R.id.chip_choice03);
+            chip03.setText(questions.get(0).getAnswerThree());
+            Chip chip04=rootView.findViewById(R.id.chip_choice04);
+            chip04.setText(questions.get(0).getAnswerFour());
+            ChoiceChip(questions.get(0).getSymbolQuestionAnswer(),questions.get(0).getSymbolId());
+        });
+
+    }
+
+    //判断是否为正确答案
+    public void judgement(Chip chip,String rightAnswer,int symbolId){
+        if(chip.getText().equals(rightAnswer)){ //题目答对了
+            chip.setChipBackgroundColorResource(R.color.content_text_yellow);
+        }else{  //题目答错了
+            chip.setChipBackgroundColorResource(R.color.color_red);
+
+            ((StudyActivity)getActivity()).ReloadStudyPage(symbolId);
+        }
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -113,26 +148,4 @@ public class ChoiceFragment extends Fragment {
         timer.schedule(task, 1000);//3秒后执行TimeTask的run方法
     }
 
-
-    //订阅并绑定数据到控件
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void onEvent(QuestionVO data){
-        //Log.e("TAG", "onEvent: 接受到数据"+data.toString() );
-        TextView tv_symbol=rootView.findViewById(R.id.tv_choice_title);
-        tv_symbol.setText(data.getSymbolQuestionContent());
-        Chip chip01=rootView.findViewById(R.id.chip_choice01);
-        chip01.setText(data.getAnswerOne());
-        Chip chip02=rootView.findViewById(R.id.chip_choice02);
-        chip02.setText(data.getAnswerTwo());
-        Chip chip03=rootView.findViewById(R.id.chip_choice03);
-        chip01.setText(data.getAnswerThree());
-        Chip chip04=rootView.findViewById(R.id.chip_choice04);
-        chip01.setText(data.getAnswerFour());
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this); //取消注册
-    }
 }

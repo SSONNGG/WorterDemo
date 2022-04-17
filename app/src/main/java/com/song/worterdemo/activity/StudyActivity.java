@@ -36,7 +36,6 @@ import java.util.List;
 
 public class StudyActivity extends AppCompatActivity {
 
-
     ViewPager2 viewPager;
     ArrayList<Fragment> fragments=new ArrayList<>();
     MyFragmentPageAdapter Adapter;
@@ -72,7 +71,6 @@ public class StudyActivity extends AppCompatActivity {
             tv_mode_title.setText("复习模式");
             tv_mode_title.setTextColor(R.color.black);
             tv_mode_subTitle.setTextColor(R.color.black);
-            //study.setBackgroundResource(R.color.silver);
             initReviewMode();
 
         }else if(mode.equals("SpellEnglishMode")) {
@@ -107,6 +105,17 @@ public class StudyActivity extends AppCompatActivity {
             tv_mode_subTitle.setText("随意练习吧");
             tv_mode_subTitle.setTextColor(R.color.content_purple_deep);
         }
+
+        viewPager=findViewById(R.id.id_studyViewPage);
+        Adapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
+        viewPager.setUserInputEnabled(false);   //禁止滑动
+        viewPager.setAdapter(Adapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+            }
+        });
     }
 
     //初始化学习模式的界面与数据
@@ -116,29 +125,30 @@ public class StudyActivity extends AppCompatActivity {
         int SymbolGroup=sp.getInt("SymbolGroup",1); //获取保存在SP文件中SymbolGroup的值，默认为1
         SymbolViewModel symbolViewModel=new ViewModelProvider(this).get(SymbolViewModel.class);
         symbolViewModel.getSymbolByGroup(SymbolGroup).observe(this,symbols -> {
-            symbolViewModel.getSymbolLive().setValue(symbols);
             for(int i=0;i<symbols.size();i++){
                 fragments.add(StudyFragment.newInstance(symbols.get(i).getSymbolId()));
-                fragments.add(ChoiceFragment.newInstance());
+                fragments.add(ChoiceFragment.newInstance(symbols.get(i).getSymbolId()));
             }
-            viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-                @Override
-                public void onPageSelected(int position) {
-                    super.onPageSelected(position);
-                }
-            });
+        });
+    }
+
+    //如果题目做错了
+    public void ReloadStudyPage(int SymbolId){
+        Log.e("TAG", "ReloadStudyPage: "+ viewPager.getCurrentItem());
+        SymbolViewModel symbolViewModel=new ViewModelProvider(this).get(SymbolViewModel.class);
+        symbolViewModel.getSymbolById(SymbolId).observe(this,symbols -> {
+            fragments.add(viewPager.getCurrentItem()+2,StudyFragment.newInstance(symbols.get(0).getSymbolId()));
+            fragments.add(viewPager.getCurrentItem()+3,ChoiceFragment.newInstance(symbols.get(0).getSymbolId()));
         });
         viewPager=findViewById(R.id.id_studyViewPage);
         Adapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
-        viewPager.setUserInputEnabled(false);   //禁止滑动
-        viewPager.setAdapter(Adapter);
     }
 
     private void initReviewMode() {
 
     }
 
-   private void initNumMode(){
+    private void initNumMode(){
 
     }
 
@@ -152,10 +162,9 @@ public class StudyActivity extends AppCompatActivity {
         }else{
             viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
             ProgressBar pb=findViewById(R.id.pb_study);
-            pb.setMax(Adapter.getItemCount()-1);
-            pb.setProgress(viewPager.getCurrentItem()+1);
+            pb.setMax(Adapter.getItemCount());
+            pb.setProgress(viewPager.getCurrentItem());
         }
     }
-
 
 }
