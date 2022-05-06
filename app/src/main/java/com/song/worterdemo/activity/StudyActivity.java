@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,10 +28,13 @@ import com.song.worterdemo.bus.LiveDataBus;
 import com.song.worterdemo.entity.QuestionVO;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.fragment.ChoiceFragment;
+import com.song.worterdemo.fragment.ReviewFragment;
 import com.song.worterdemo.fragment.StudyFragment;
 import com.song.worterdemo.utils.StatusBarUtil;
+import com.song.worterdemo.viewmodel.ReviewQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
+import com.song.worterdemo.viewmodel.WordViewModel;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -138,14 +145,21 @@ public class StudyActivity extends AppCompatActivity {
         SymbolViewModel symbolViewModel=new ViewModelProvider(this).get(SymbolViewModel.class);
         symbolViewModel.getSymbolById(SymbolId).observe(this,symbols -> {
             fragments.add(viewPager.getCurrentItem()+2,StudyFragment.newInstance(symbols.get(0).getSymbolId()));
-            fragments.add(viewPager.getCurrentItem()+3,ChoiceFragment.newInstance(symbols.get(0).getSymbolId()));
+            fragments.add(viewPager.getCurrentItem()+2,ChoiceFragment.newInstance(symbols.get(0).getSymbolId()));
         });
-        viewPager=findViewById(R.id.id_studyViewPage);
-        Adapter=new MyFragmentPageAdapter(getSupportFragmentManager(),getLifecycle(),fragments);
     }
 
+    //准备复习数据
     private void initReviewMode() {
-
+        ProgressBar pb=findViewById(R.id.pb_study);
+        pb.setProgressDrawable(getResources().getDrawable(R.drawable.progressbar_review));
+        fragments.clear();
+        ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
+        reviewQuestionViewModel.getReviewQuestion().observe(this,reviewVOS -> {
+            for(int i=0;i<reviewVOS.size();i++){
+                fragments.add(ReviewFragment.newInstance());
+            }
+        });
     }
 
     private void initNumMode(){
@@ -158,6 +172,7 @@ public class StudyActivity extends AppCompatActivity {
             //在子线程中使用Toast必须Looper
             Looper.prepare();
             Toast.makeText(getApplicationContext(),"已经到最后一页啦",Toast.LENGTH_SHORT).show();
+
             Looper.loop();
         }else{
             viewPager.setCurrentItem(viewPager.getCurrentItem()+1);

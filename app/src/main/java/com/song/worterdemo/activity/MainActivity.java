@@ -21,6 +21,7 @@ import com.song.worterdemo.entity.Alphabet;
 import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.entity.OtherQuestion;
 import com.song.worterdemo.entity.QuestionVO;
+import com.song.worterdemo.entity.ReviewQuestion;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 import com.song.worterdemo.entity.WordAndSymbol;
@@ -34,6 +35,7 @@ import com.song.worterdemo.utils.StatusBarUtil;
 import com.song.worterdemo.viewmodel.AlphabetViewModel;
 import com.song.worterdemo.viewmodel.ArticleViewModel;
 import com.song.worterdemo.viewmodel.OtherQuestionViewModel;
+import com.song.worterdemo.viewmodel.ReviewQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolQuestionViewModel;
 import com.song.worterdemo.viewmodel.SymbolViewModel;
 import com.song.worterdemo.viewmodel.WordViewModel;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMain,llOriginal,llSearch,llMy;
     private ImageView ivMain,ivOriginal,ivSearch,ivMy,ivCurrent;
     private DatabaseUtil dbutil;
-    WordViewModel viewModel;
+    ReviewQuestionViewModel viewModel;
     //SP文件
 
 
@@ -64,7 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //从数据库文件导入数据库
         dbutil=new DatabaseUtil(this);
         dbutil.openDatabase();
-//        viewModel=new ViewModelProvider(this).get(WordViewModel.class);
+//        viewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
+//        viewModel.getAllReviewQuestion().observe(this, new Observer<List<ReviewQuestion>>() {
+//            @Override
+//            public void onChanged(List<ReviewQuestion> reviewQuestions) {
+//                Log.e("TAG", "onChanged: "+reviewQuestions.toString() );
+//            }
+//        });
 //        viewModel.updateWordIsraw(1,1);
 //        viewModel.updateWordIsraw(1,2);
 //        viewModel.updateWordIsraw(1,8);
@@ -75,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        viewModel.updateWordIsraw(1,31);
 //        viewModel.updateWordIsraw(1,91);
 //        viewModel.updateWordIsraw(1,100);
+
+        //添加模拟数据
+//        ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
+//        reviewQuestionViewModel.updateReviewIsraw(1,1);
 
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);

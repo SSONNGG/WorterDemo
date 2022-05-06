@@ -5,7 +5,7 @@
     android:id="@+id/fragment_study"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/content_background_blue"
+    android:background="@color/silver"
     tools:context=".fragment.ChoiceFragment">
 
     <LinearLayout
@@ -18,25 +18,19 @@
 
         <TextView
             android:id="@+id/tv_choice_title"
-            android:text="[ɑ:]"
-            android:textColor="@color/white"
+            android:text="word"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="34sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
-            android:text="@string/study_symbol"
-            android:textColor="@color/deep_skyblue"
+            android:text="单词"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:text="@string/study_alphabet"
-            android:textColor="@color/deep_skyblue"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
 
         <LinearLayout
             android:layout_width="120dp"
@@ -52,16 +46,16 @@
                 app:singleLine="false"
                 app:singleSelection="true"
                 android:orientation="vertical"
-                
+
                 >
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_choice01"
                     android:text="ar,a"
-                    android:textColor="@color/white"
+                    android:textColor="@color/cardview_dark_background"
                     android:textAlignment="center"
-                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeColor="@color/cardview_dark_background"
                     app:chipStrokeWidth="2dp"
-                    app:chipBackgroundColor="@color/content_background_blue"
+                    app:chipBackgroundColor="@color/silver"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="120dp"
                     android:layout_height="55dp" />
@@ -69,11 +63,11 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_choice02"
                     android:text="ir,ur"
-                    android:textColor="@color/white"
+                    android:textColor="@color/cardview_dark_background"
                     android:textAlignment="center"
-                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeColor="@color/cardview_dark_background"
                     app:chipStrokeWidth="2dp"
-                    app:chipBackgroundColor="@color/content_background_blue"
+                    app:chipBackgroundColor="@color/silver"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="120dp"
                     android:layout_height="55dp" />
@@ -81,11 +75,11 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_choice03"
                     android:text="oo,or"
-                    android:textColor="@color/white"
+                    android:textColor="@color/cardview_dark_background"
                     android:textAlignment="center"
-                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeColor="@color/cardview_dark_background"
                     app:chipStrokeWidth="2dp"
-                    app:chipBackgroundColor="@color/content_background_blue"
+                    app:chipBackgroundColor="@color/silver"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="120dp"
                     android:layout_height="55dp" />
@@ -93,23 +87,17 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_choice04"
                     android:text="ea,e"
-                    android:textColor="@color/white"
+                    android:textColor="@color/cardview_dark_background"
                     android:textAlignment="center"
-                    app:chipStrokeColor="@color/white"
+                    app:chipStrokeColor="@color/cardview_dark_background"
                     app:chipStrokeWidth="2dp"
-                    app:chipBackgroundColor="@color/content_background_blue"
+                    app:chipBackgroundColor="@color/silver"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="120dp"
                     android:layout_height="55dp" />
             </com.google.android.material.chip.ChipGroup>
 
-
-
         </LinearLayout>
 
-
     </LinearLayout>
-
-
-
 </LinearLayout>

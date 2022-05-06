@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.song.worterdemo.adapter.ArticleRecyclerViewAdapter;
 import com.song.worterdemo.entity.Article;
 import com.song.worterdemo.utils.DateUtil;
 import com.song.worterdemo.viewmodel.ArticleViewModel;
+import com.song.worterdemo.viewmodel.ReviewQuestionViewModel;
 
 import java.util.Calendar;
 import java.util.List;
@@ -128,7 +130,7 @@ public class MainFragment extends Fragment{
     }
 
     /*
-     * 模拟数据
+     * 配置界面数据
      */
     private void initData(){
         SharedPreferences sp= this.getActivity().getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
@@ -136,6 +138,13 @@ public class MainFragment extends Fragment{
         int SymbolGroup=sp.getInt("SymbolGroup",1);
         TextView tv_symbol_group=rootView.findViewById(R.id.tv_symbol_group);
         tv_symbol_group.setText("第 "+SymbolGroup+" 组音标");
+        //绑定复习单词数据
+        TextView tv_general=rootView.findViewById(R.id.tv_general);
+        ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
+        reviewQuestionViewModel.getReviewQuestion().observe(getActivity(),reviewVOS -> {
+            tv_general.setText("共 "+ reviewVOS.size() +" 个单词需要复习");
+        });
+
 
     }
 

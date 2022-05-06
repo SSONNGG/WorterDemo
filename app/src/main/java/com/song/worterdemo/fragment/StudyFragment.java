@@ -32,6 +32,7 @@ public class StudyFragment extends Fragment {
     private static final String ARG_PARAM = "param";
     private Integer mParam;
 
+
     public StudyFragment() {
     }
 
@@ -62,11 +63,9 @@ public class StudyFragment extends Fragment {
         return rootView;
     }
 
-
     private void setData(){
         SymbolViewModel symbolViewModel=new ViewModelProvider(getActivity()).get(SymbolViewModel.class);
         symbolViewModel.getSymbolById(mParam).observe(getActivity(),symbols -> {
-            //Log.e("TAG", "setData: "+symbols.get(0).toString() );
             //Update UI
             TextView tv_symbol=rootView.findViewById(R.id.tv_symbol_content);
             tv_symbol.setText(symbols.get(0).getSymbolContent());
@@ -86,6 +85,5 @@ public class StudyFragment extends Fragment {
             }
         });
     }
-
 
 }

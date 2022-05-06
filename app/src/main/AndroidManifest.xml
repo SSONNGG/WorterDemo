@@ -20,6 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorterDemo"
         tools:replace="allowBackup">
+        <service
+            android:name=".service.AudioService"
+            android:enabled="true"
+            android:exported="true"
+            />
         <activity
             android:name=".activity.ArticleInfoActivity"
             android:exported="false" />

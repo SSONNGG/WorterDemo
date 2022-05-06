@@ -1,5 +1,6 @@
 package com.song.worterdemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import com.song.worterdemo.R;
 import com.song.worterdemo.adapter.WordbookRecyclerViewAdapter;
 import com.song.worterdemo.entity.Word;
 import com.song.worterdemo.entity.WordAndSymbol;
+import com.song.worterdemo.service.AudioService;
 import com.song.worterdemo.viewmodel.WordViewModel;
 
 import java.util.ArrayList;
@@ -78,6 +80,9 @@ public class WordbookFragment extends Fragment {
                     @Override
                     public void OnItemClick(View view, WordAndSymbol data) {
                         showDialog(data);
+//                        Intent intent = new Intent(getActivity(), AudioService.class);
+//                        intent.putExtra("query", data.getWordContent());
+//                        getActivity().startService(intent);
                     }
                 });
             }
