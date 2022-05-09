@@ -131,7 +131,7 @@ public class ChoiceFragment extends Fragment {
             @Override
             public void run() {
                 //切换页面
-                ((StudyActivity) getActivity()).changePage();
+                ((StudyActivity) getActivity()).studyChangePage();
             }
         };
         Timer timer = new Timer();

@@ -81,7 +81,7 @@ public class StudyFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((StudyActivity)getActivity()).changePage();
+                ((StudyActivity)getActivity()).studyChangePage();
             }
         });
     }

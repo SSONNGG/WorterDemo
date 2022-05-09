@@ -127,8 +127,8 @@ public class StudyActivity extends AppCompatActivity {
 
     //初始化学习模式的界面与数据
     private void initStudyModeData(){
-        SharedPreferences sp= getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
         //获取SP文件中的音标组数据
+        SharedPreferences sp= getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
         int SymbolGroup=sp.getInt("SymbolGroup",1); //获取保存在SP文件中SymbolGroup的值，默认为1
         SymbolViewModel symbolViewModel=new ViewModelProvider(this).get(SymbolViewModel.class);
         symbolViewModel.getSymbolByGroup(SymbolGroup).observe(this,symbols -> {
@@ -157,7 +157,7 @@ public class StudyActivity extends AppCompatActivity {
         ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
         reviewQuestionViewModel.getReviewQuestion().observe(this,reviewVOS -> {
             for(int i=0;i<reviewVOS.size();i++){
-                fragments.add(ReviewFragment.newInstance());
+                fragments.add(ReviewFragment.newInstance(reviewVOS.get(i).getReviewId()));
             }
         });
     }
@@ -167,12 +167,29 @@ public class StudyActivity extends AppCompatActivity {
     }
 
 
-    public void changePage(){
+    public void studyChangePage(){
+        if(viewPager.getCurrentItem()==Adapter.getItemCount()-1){   //当前item等于总item数目时，完成业务：显示学习完成界面。
+            SharedPreferences sp= getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
+            //在子线程中使用Toast必须Looper
+            Looper.prepare();
+            ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
+            reviewQuestionViewModel.updateReviewIsraw(1,sp.getInt("SymbolGroup",1));
+            Toast.makeText(getApplicationContext(),"第 "+sp.getInt("SymbolGroup",1)+" 组音标学习完毕！",Toast.LENGTH_SHORT).show();
+            sp.edit().putInt("SymbolGroup",sp.getInt("SymbolGroup",1)+1).apply();
+            Looper.loop();
+        }else{
+            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            ProgressBar pb=findViewById(R.id.pb_study);
+            pb.setMax(Adapter.getItemCount());
+            pb.setProgress(viewPager.getCurrentItem());
+        }
+    }
+
+    public void reviewChangePage(){
         if(viewPager.getCurrentItem()==Adapter.getItemCount()-1){   //当前item等于总item数目时，完成业务：显示学习完成界面。
             //在子线程中使用Toast必须Looper
             Looper.prepare();
             Toast.makeText(getApplicationContext(),"已经到最后一页啦",Toast.LENGTH_SHORT).show();
-
             Looper.loop();
         }else{
             viewPager.setCurrentItem(viewPager.getCurrentItem()+1);

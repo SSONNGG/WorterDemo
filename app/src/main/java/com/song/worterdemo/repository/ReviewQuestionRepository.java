@@ -40,6 +40,11 @@ public class ReviewQuestionRepository {
         return reviewList;
     }
 
+    public LiveData<List<ReviewVO>> getReviewQuestionAndSymbolById(Integer... id){
+        reviewList=dao.getReviewQuestionAndSymbolById(id);
+        return reviewList;
+    }
+
     public void updateReviewIsraw(Integer israw,Integer group){
         executor.execute(()->{
             dao.updateReviewIsraw(israw,group);

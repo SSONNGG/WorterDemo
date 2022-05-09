@@ -73,10 +73,8 @@ public class MainFragment extends Fragment{
 //        initRecyclerView();
         //绑定文章
         bingdingArticle();
-
         //模拟数据
         initData();
-
         //给LinearLayout绑定点击事件
         LinearLayout layout = rootView.findViewById(R.id.ll_allArticle);
         layout.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +85,17 @@ public class MainFragment extends Fragment{
             }
         });
         return rootView;
+    }
 
+    //回到Fragment界面后重新绑定数据
+    @Override
+    public void onResume() {
+        SharedPreferences sp= this.getActivity().getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
+        //获取SP文件,默认为1
+        int SymbolGroup=sp.getInt("SymbolGroup",1);
+        TextView tv_symbol_group=rootView.findViewById(R.id.tv_symbol_group);
+        tv_symbol_group.setText("第 "+SymbolGroup+" 组音标");
+        super.onResume();
     }
 
     private void bingdingArticle() {

@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.song.worterdemo.dao.SymbolQuestionDao;
 import com.song.worterdemo.db.WorterDatabase;
 import com.song.worterdemo.entity.QuestionVO;
+import com.song.worterdemo.entity.ReviewVO;
 import com.song.worterdemo.entity.Symbol;
 import com.song.worterdemo.entity.SymbolQuestion;
 
@@ -74,6 +75,8 @@ public class SymbolQuestionRepository {
         questions=dao.getSymbolQuestionListBySymbolId(group);
         return questions;
     }
+
+
 
 
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -86,14 +87,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //添加模拟数据
 //        ReviewQuestionViewModel reviewQuestionViewModel=new ViewModelProvider(this).get(ReviewQuestionViewModel.class);
-//        reviewQuestionViewModel.updateReviewIsraw(1,1);
-
+//        reviewQuestionViewModel.updateReviewIsraw(0,1);
+//        SharedPreferences sp= getSharedPreferences("SPWorter", Context.MODE_PRIVATE);
+//        sp.edit().putInt("SymbolGroup",1).apply();
         //需要切换颜色就调用
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
         initPage();
         initTableView();
     }
-
 
     //实现点击事件
     @Override

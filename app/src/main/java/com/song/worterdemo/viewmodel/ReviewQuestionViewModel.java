@@ -32,6 +32,10 @@ public class ReviewQuestionViewModel extends AndroidViewModel {
         return repository.getReviewQuestionAndSymbolByGroup(group);
     }
 
+    public LiveData<List<ReviewVO>> getReviewQuestionAndSymbolById(Integer... id){
+        return repository.getReviewQuestionAndSymbolById(id);
+    }
+
     public void updateReviewIsraw(Integer israw,Integer group){
        repository.updateReviewIsraw(israw,group);
     }

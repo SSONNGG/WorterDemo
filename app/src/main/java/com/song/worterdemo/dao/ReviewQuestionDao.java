@@ -29,6 +29,13 @@ public interface ReviewQuestionDao {
             "from review_question,symbol where review_question.symbol_id=symbol.symbol_id and symbol_group= :group")
     public LiveData<List<ReviewVO>> getReviewQuestionAndSymbolByGroup(Integer... group);
 
+    //根据ID查询
+    @Query("select review_id,word_id,word_content,answer_one,answer_two,answer_three,answer_four,review_answer,israw,symbol.symbol_id," +
+            "symbol_content,symbol_group,symbol_islearn,symbol_alphabet,symbol_pronun " +
+            "from review_question,symbol where review_question.symbol_id=symbol.symbol_id and review_id= :id")
+    public LiveData<List<ReviewVO>> getReviewQuestionAndSymbolById(Integer... id);
+
+
     //根据音标组修改复习题为待复习    //修改israw为1
     @Query("update review_question set israw=:israw where review_question.symbol_id=" +
             "(select symbol_id from symbol where symbol.symbol_id=review_question.symbol_id " +
